@@ -22,7 +22,6 @@ function ArticleCard({ image, title, detail }: ArticleCardProps) {
                     />
                 </div>
 
-                {/* ข้อความ */}
                 <div className="space-y-4">
                     <h4 className="text-lg md:text-xl font-semibold text-neutral-800">
                         {title}
@@ -41,6 +40,7 @@ function ArticleCard({ image, title, detail }: ArticleCardProps) {
                     <ArrowRight />
                 </div>
             </div>
+            
         </div>
     );
 }

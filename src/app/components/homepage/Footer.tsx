@@ -19,7 +19,7 @@ function Footer() {
     <footer className="bg-gradient-to-br from-primary/10 via-background to-secondary/5">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {/* Brand Section */}
+          {/* Brand section */}
           <div className="flex justify-center lg:justify-start mb-6 lg:mb-0">
             <Logo
               exaColor="text-primary-100"
@@ -44,7 +44,7 @@ function Footer() {
               ))}
             </ul>
 
-            {/* Social Links */}
+            {/* Social links */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-12">
               {socialLinks.map((social, index) => (
                 <a

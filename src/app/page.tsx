@@ -15,7 +15,7 @@ export default function Home() {
         <div>
             <Navigation />
 
-            <div className="space-y-12 container mx-auto p-4">
+            <div className=" container mx-auto px-4">
                 {/* AnalyzeHealth */}
                 <div className="mt-48">
                     <AnalyzeHealthSection />
@@ -30,12 +30,16 @@ export default function Home() {
                 <div className="">
                     <BenefitSection />
                 </div>
+            </div>
 
-                {/* Service */}
-                <div className=" bg-sky py-12 ">
+            {/* Service */}
+            <div className=" bg-sky py-12 ">
+                <div className="container mx-auto px-4">
                     <ServiceSection />
                 </div>
+            </div>
 
+            <div className="space-y-12 container mx-auto px-4">
                 {/* Avatar */}
                 <div className="">
                     <AvatarSection />
@@ -50,13 +54,12 @@ export default function Home() {
                 <div className="mb-12">
                     <AdviceSection />
                 </div>
-
             </div>
 
             {/* Footer */}
-                <div className="bg-neutral-800 text-neutral-100">
-                    <Footer />
-                </div>
+            <div className="bg-neutral-800 text-neutral-100">
+                <Footer />
+            </div>
         </div>
     );
 }

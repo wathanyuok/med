@@ -7,13 +7,13 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "แพคเกจสุขภาพ", href: "#home" },
-    { label: "แผนก", href: "#services" },
-    { label: "บทความ", href: "#doctors" },
-    { label: "AI วิเคราะห์ผล", href: "#about" },
-    { label: "เกี่ยวกับเรา", href: "#contact" },
-    { label: "ติชมบริการ", href: "#contact" },
-    { label: "เข้าสู่ระบบ", href: "#contact", type: "login-btn" }
+    { label: "แพคเกจสุขภาพ", href: "#" },
+    { label: "แผนก", href: "#" },
+    { label: "บทความ", href: "#" },
+    { label: "AI วิเคราะห์ผล", href: "#" },
+    { label: "เกี่ยวกับเรา", href: "#" },
+    { label: "ติชมบริการ", href: "#" },
+    { label: "เข้าสู่ระบบ", href: "#", type: "login-btn" }
   ];
 
   return (
