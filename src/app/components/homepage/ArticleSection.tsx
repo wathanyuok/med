@@ -1,4 +1,4 @@
-import { ArrowRight } from "@/app/assets/icons/serviceIcons";
+import { ArrowRight } from "@/app/assets/icons/homepageIcons";
 import React from "react";
 import ArticleCard from "./ArticleCard";
 
@@ -29,7 +29,7 @@ function ArticleSection() {
 
     return (
         <div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
                 <h3 className="text-2xl md:text-3xl text-neutral-800 font-semibold">
                     บทความที่น่าสนใจ
                 </h3>

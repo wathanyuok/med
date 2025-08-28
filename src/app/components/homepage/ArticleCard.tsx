@@ -1,4 +1,4 @@
-import { ArrowRight } from "@/app/assets/icons/serviceIcons";
+import { ArrowRight } from "@/app/assets/icons/homepageIcons";
 import React from "react";
 import Image from "next/image";
 import ArticleImage from "@/app/assets/images/article.png";

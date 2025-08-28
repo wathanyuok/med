@@ -1,4 +1,4 @@
-import { ArrowRight } from "@/app/assets/icons/serviceIcons";
+import { ArrowRight } from "@/app/assets/icons/homepageIcons";
 import { Avatar, AvatarGroup } from "@mui/material";
 import React from "react";
 import doctor1 from "@/app/assets/images/doctor1.png";

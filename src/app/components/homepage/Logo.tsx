@@ -10,7 +10,7 @@ function Logo({ exaColor = "text-exa-pink", medColor = "text-gray-primary", mini
   return (
     <div className="inline-block select-none">
       <div className="relative">
-        <div className="text-5xl font-medium flex gap-4 p-6">
+        <div className="text-5xl font-medium flex gap-4 py-6">
           <div>
             <h1 className={exaColor}>EXA</h1>
           </div>

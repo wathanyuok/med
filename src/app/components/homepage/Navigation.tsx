@@ -19,7 +19,7 @@ function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 medical-glass border-b border-white/10 p-6 md:p-8 shadow-lg bg-neutral-100">
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12">
 
           {/* Mobile Menu Button (ซ้ายบน mobile) */}
           <button
@@ -40,9 +40,9 @@ function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
-                className={`transition-colors duration-200 font-medium
+                className={`transition duration-300 font-medium
                   ${item.type === "login-btn" 
-                    ? "bg-primary text-gray-primary border-2 rounded-xl px-4 py-2 hover:bg-primary/90"
+                    ? "bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-primary/90 hover:scale-105"
                     : "text-foreground hover:text-primary"
                   }`}
               >

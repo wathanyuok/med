@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${ibmPlexSansThai.variable}`}>
-            <body className={`antialiased bg-neutral-100`}>{children}</body>
+            <body className={`antialiased bg-neutral-100 text-neutral-800 transition-all duration-300`}>{children}</body>
         </html>
     );
 }

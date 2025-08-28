@@ -1,5 +1,5 @@
 import React from "react";
-import { icons } from "@/app/assets/icons/serviceIcons";
+import { icons } from "@/app/assets/icons/homepageIcons";
 import ServiceCard from "./ServiceCard";
 
 type IconKey = keyof typeof icons;
@@ -55,7 +55,7 @@ function ServiceSection() {
                     บริการของเรา
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-6 mt-8">
                     {services.map((service, idx) => {
                         return (
                             <ServiceCard

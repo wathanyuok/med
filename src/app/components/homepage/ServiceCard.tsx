@@ -1,5 +1,5 @@
 import React from "react";
-import { icons, ArrowRight } from "@/app/assets/icons/serviceIcons";
+import { icons, ArrowRight } from "@/app/assets/icons/homepageIcons";
 
 type IconKey = keyof typeof icons;
 

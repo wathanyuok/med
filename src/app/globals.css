@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @theme inline {
 
   --font-sans: var(--font-ibm-plex-sans-thai), sans-serif;
@@ -8,6 +7,7 @@
   --color-exa-tab: linear-gradient(90deg, #F73ABB 0.55%, #DDA3FF 179.33%);
 
   --color-exa-pink: #F639BD;
+  --color-bright-pink: #FEE7EF;
   --color-bright-blue: #4385EF;
   --color-happy-pink: #FC95FF;
   --color-gray-primary: #545457;
