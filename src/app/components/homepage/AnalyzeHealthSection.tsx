@@ -1,15 +1,15 @@
 import React from "react";
 import PinkDna from "@/app/assets/images/pink-dna.png";
-import HeartBeat from "@/app/assets/images/heart-beat.png";
-import Doctor from "@/app/assets/images/doctor.png";
+import { DiscoveryCard, RiskCard } from "@/app/assets/icons/homepageIcons";
 import Image from "next/image";
+import Lab from "@/app/assets/images/lab.png";
 
 function AnalyzeHealth() {
     return (
         <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
                 {/* left content */}
-                <div className="md:col-span-2 shadow-md rounded-2xl bg-neutral-100 relative h-[462px] overflow-hidden">
+                <div className="md:col-span-2 shadow-md rounded-2xl bg-neutral-100 relative h-[500px] overflow-hidden">
                     {/* Background image */}
                     <Image
                         src={PinkDna}
@@ -36,9 +36,7 @@ function AnalyzeHealth() {
                                 พร้อมแนะนำแนวทางดูแลเฉพาะบุคคล ด้วย AI
                             </div>
 
-                            <div
-                                className="text-neutral-100 flex items-center justify-center col-span-1 rounded-[40px] bg-[linear-gradient(270deg,#EE8DD9_0%,#F639BD_50%,#EE8DD9_100%)] py-2 px-4 cursor-pointer hover:scale-105 transition duration-300"
-                            >
+                            <div className="text-neutral-100 flex items-center justify-center col-span-1 rounded-[40px] bg-[linear-gradient(270deg,#EE8DD9_0%,#F639BD_50%,#EE8DD9_100%)] py-2 px-4 cursor-pointer hover:scale-105 transition duration-300">
                                 <p className="text-center text-sm sm:text-base md:text-base">
                                     วิเคราะห์ผลตรวจ สุขภาพด้วย AI
                                 </p>
@@ -48,42 +46,59 @@ function AnalyzeHealth() {
                 </div>
 
                 {/* right content */}
-                <div className="grid grid-rows-2 gap-6 h-[462px]">
-                    <div className="relative bg-[linear-gradient(157deg,#E7EEFE_15.12%,#D1DCF4_114.38%)] p-8 rounded-xl overflow-hidden">
-                        {/* ข้อความอยู่ซ้ายล่าง */}
-                        <div className="absolute left-0 bottom-0 p-6 text-left text-xl font-semibold text-neutral-800 z-10 space-y-4">
-                            <div className="text-neutral-800">
-                                แพทย์ผู้เชี่ยวชาญ
+                <div className="grid grid-rows-2 gap-6 h-[500px]">
+                    <div className="relative p-8 rounded-xl overflow-hidden">
+                        {/* Overlay ไล่สีจากขาวทึบ → โปร่งใส */}
+                        <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-white/90 via-white/60 to-transparent p-6 text-left text-xl font-semibold text-neutral-800 z-10 space-y-4">
+                            <div className="text-neutral-800 text-2xl">
+                                ด้วย Lab และเครื่องวิเคราะห์ <br />
+                                ที่ได้รับ{" "}
+                                <span className="text-exa-pink text-2xl">
+                                    มาตราฐานสูงสุด*
+                                </span>
                             </div>
-                            <div className="text-exa-pink text-3xl">
-                                ทั้ง 8 สาขา
+                            <div className="text-neutral-800 text-2xl font-light">
+                                เทคโนโลยี จาก Illumina และอื่นๆ
                             </div>
                         </div>
 
-                        {/* รูปอยู่ขวาล่าง */}
                         <Image
-                            src={Doctor}
+                            src={Lab}
                             alt="doctor"
-                            className="absolute right-0 -bottom-2 h-full w-auto object-contain"
+                            className="absolute right-0 top-0 bottom-0 h-full object-cover"
                         />
                     </div>
 
-                    <div className=" bg-bright-pink p-8 rounded-xl space-y-4">
-                        <div className="text-left text-xl font-semibold text-neutral-800">
-                            Measured Wellness <br />
-                            สุขภาพดีแบบที่{" "}
-                            <span className="text-exa-pink">วัดผลได้</span>
+                    <div className=" bg-icy-blue p-8 rounded-xl space-y-4 overflow-hidden">
+                        <div>
+                            <div className="text-neutral-800 text-2xl font-semibold mb-2">
+                                Measured Wellness <br />
+                                สุขภาพดี
+                            </div>
+                            <div className="text-exa-pink text-2xl font-semibold">
+                                วัดผลได้
+                            </div>
                         </div>
-                        <div className="flex items-center justify-center">
-                            <Image
-                                src={HeartBeat}
-                                alt="heart beat"
-                                className=""
-                            />
+
+                        <div className="md:col-span-1 flex items-center justify-center">
+                            <div className="relative flex items-start">
+                                <div className="relative z-10 scale-80 translate-x-70 -translate-y-40">
+                                    <DiscoveryCard />
+                                </div>
+
+                                <div
+                                    className="
+                                                    relative z-20
+                                                    -translate-x-12
+                                                    -translate-y-36
+                                                    scale-80 "
+                                >
+                                    <RiskCard />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

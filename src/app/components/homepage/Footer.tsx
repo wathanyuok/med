@@ -16,7 +16,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-primary/10 via-background to-secondary/5">
+    <footer className="bg-neutral-800 text-neutral-100">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Brand section */}
@@ -36,7 +36,7 @@ function Footer() {
                 <li key={index}>
                   <a
                     href="#"
-                    className="text-lg sm:text-xl text-muted-foreground hover:text-primary hover:underline transition duration-300"
+                    className="text-lg sm:text-xl hover:underline transition duration-300"
                   >
                     {service}
                   </a>

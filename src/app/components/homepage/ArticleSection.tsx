@@ -54,7 +54,7 @@ function ArticleSection() {
           md:grid-cols-2
           lg:grid-cols-4
           gap-4 sm:gap-6 lg:gap-8
-          mt-6 sm:mt-8 lg:mt-10"
+          mt-6 sm:mt-6 lg:mt-8"
       >
         {articles.map((article, idx) => (
           <ArticleCard

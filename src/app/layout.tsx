@@ -3,6 +3,8 @@ import "./globals.css";
 
 // === import font ===
 import { IBM_Plex_Sans_Thai } from "next/font/google";
+import Navigation from "./components/homepage/Navigation";
+import Footer from "./components/homepage/Footer";
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
     subsets: ["thai"],
@@ -26,7 +28,9 @@ export default function RootLayout({
             <body
                 className={`antialiased bg-neutral-100 text-neutral-800 transition-all duration-300`}
             >
-                {children}
+                <Navigation />
+                <main>{children}</main>
+                <Footer/>
             </body>
         </html>
     );

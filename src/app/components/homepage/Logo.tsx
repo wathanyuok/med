@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface LogoProps {
@@ -8,7 +9,7 @@ interface LogoProps {
 
 function Logo({ exaColor = "text-exa-pink", medColor = "text-gray-primary", miniExaMedColor = "text-gray-primary" }: LogoProps) {
   return (
-    <div className="inline-block select-none">
+    <Link className="inline-block select-none cursor-pointer" href={"/"}>
       <div className="relative">
         <div className="text-5xl font-medium flex gap-4 py-6">
           <div>
@@ -23,7 +24,7 @@ function Logo({ exaColor = "text-exa-pink", medColor = "text-gray-primary", mini
           <p className={miniExaMedColor}>เอ็กซ์ซ่า เมด</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

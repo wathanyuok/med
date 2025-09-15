@@ -1,0 +1,44 @@
+import React from "react";
+
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
+export interface SelectionInterface {
+    label?: string;
+    placeholder?: string;
+    options?: {
+        id: number;
+        value: string;
+    }[];
+}
+
+function Selection({ label = "กรุณาเลือก", placeholder="กรุณาเลือก", options }: SelectionInterface) {
+    return (
+        <div>
+            <Select>
+                <SelectTrigger className="w-full cursor-pointer bg-white h-10">
+                    <SelectValue placeholder= {placeholder}/>
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectGroup>
+                        <SelectLabel>{label}</SelectLabel>
+                        {
+                          options?.map(option => (
+                            <SelectItem className="cursor-pointer" value={option.value} key={option.id}>{option.value}</SelectItem>
+                          ))
+                        }
+                    </SelectGroup>
+                </SelectContent>
+            </Select>
+        </div>
+    );
+}
+
+export default Selection;
