@@ -1,9 +1,25 @@
 import React from "react";
-import { CardCarousel } from "./Carousel";
+import { CardCarousel } from "../ui/Carousel";
 import { ArrowRight } from "@/app/assets/icons/homepageIcons";
+import { packages } from "@/app/utils/mockData/packages";
+import { useRouter } from "next/navigation";
 
 
 function PackageSection() {
+    const router = useRouter()
+
+    const handleAllPackage = () => {
+        router.push('/package')
+    }
+
+    const packagesData = packages.map((pkg) => {
+            return {
+                id: pkg.id,
+                title: pkg.title,
+                image_url: pkg.images[0]
+            };
+        });
+    
     return (
         <div>
             <div className="flex justify-between items-start">
@@ -16,7 +32,7 @@ function PackageSection() {
                         เพื่อให้คุณมีสุขภาพแข็งแรงและใช้ชีวิตได้อย่างที่คุณต้องการ
                     </p>
                 </div>
-                <div className="cursor-pointer hover:scale-105 transition duration-300">
+                <div className="cursor-pointer hover:scale-105 transition duration-300" onClick={handleAllPackage}>
                     <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
                         <p className="text-bright-blue font-semibold text-sm sm:text-base md:text-lg">
                             ดูแพคเกจทั้งหมด
@@ -26,7 +42,7 @@ function PackageSection() {
                 </div>
             </div>
             <div>
-                <CardCarousel />
+                <CardCarousel items={packagesData}/>
             </div>
         </div>
     );

@@ -1,44 +1,60 @@
 import React from "react";
 
 import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 
 export interface SelectionInterface {
-    label?: string;
-    placeholder?: string;
-    options?: {
-        id: number;
-        value: string;
-    }[];
+  label?: string;
+  placeholder?: string;
+  options?: {
+    id: number;
+    value: string;
+  }[];
+  classNameSelectTrigger?: string;
+  value?: string;
+  onChange?: (val: string) => void;
 }
 
-function Selection({ label = "กรุณาเลือก", placeholder="กรุณาเลือก", options }: SelectionInterface) {
-    return (
-        <div>
-            <Select>
-                <SelectTrigger className="w-full cursor-pointer bg-white h-10">
-                    <SelectValue placeholder= {placeholder}/>
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        <SelectLabel>{label}</SelectLabel>
-                        {
-                          options?.map(option => (
-                            <SelectItem className="cursor-pointer" value={option.value} key={option.id}>{option.value}</SelectItem>
-                          ))
-                        }
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
-        </div>
-    );
+function Selection({
+  label = "กรุณาเลือก",
+  placeholder = "กรุณาเลือก",
+  options,
+  classNameSelectTrigger,
+  value,
+  onChange,
+}: SelectionInterface) {
+  return (
+    <div>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger
+          className={`w-full cursor-pointer bg-white h-10 ${classNameSelectTrigger}`}
+        >
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {label && <SelectLabel className="text-lg">{label}</SelectLabel>}
+            {options?.map((option) => (
+              <SelectItem
+                className="cursor-pointer text-lg"
+                value={option.value}
+                key={option.id}
+              >
+                {option.value}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
+  );
 }
 
 export default Selection;

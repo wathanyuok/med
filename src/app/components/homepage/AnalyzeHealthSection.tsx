@@ -1,10 +1,18 @@
+'use client'
+
 import React from "react";
 import PinkDna from "@/app/assets/images/pink-dna.png";
 import { DiscoveryCard, RiskCard } from "@/app/assets/icons/homepageIcons";
 import Image from "next/image";
 import Lab from "@/app/assets/images/lab.png";
+import { useRouter } from "next/navigation";
 
 function AnalyzeHealth() {
+    const router = useRouter()
+
+    const handleGoToAiPage = () => {
+        router.push('/ai')
+    }
     return (
         <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
@@ -36,8 +44,8 @@ function AnalyzeHealth() {
                                 พร้อมแนะนำแนวทางดูแลเฉพาะบุคคล ด้วย AI
                             </div>
 
-                            <div className="text-neutral-100 flex items-center justify-center col-span-1 rounded-[40px] bg-[linear-gradient(270deg,#EE8DD9_0%,#F639BD_50%,#EE8DD9_100%)] py-2 px-4 cursor-pointer hover:scale-105 transition duration-300">
-                                <p className="text-center text-sm sm:text-base md:text-base">
+                            <div onClick={handleGoToAiPage} className="text-neutral-100 flex items-center justify-center col-span-1 rounded-[40px] bg-[linear-gradient(270deg,#EE8DD9_0%,#F639BD_50%,#EE8DD9_100%)] py-2 px-4 cursor-pointer hover:scale-105 transition duration-300">
+                                <p className="font-semibold text-center text-sm sm:text-base md:text-base">
                                     วิเคราะห์ผลตรวจ สุขภาพด้วย AI
                                 </p>
                             </div>

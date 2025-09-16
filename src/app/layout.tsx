@@ -3,8 +3,8 @@ import "./globals.css";
 
 // === import font ===
 import { IBM_Plex_Sans_Thai } from "next/font/google";
-import Navigation from "./components/homepage/Navigation";
-import Footer from "./components/homepage/Footer";
+import Navigation from "./components/ui/Navigation";
+import Footer from "./components/ui/Footer";
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
     subsets: ["thai"],

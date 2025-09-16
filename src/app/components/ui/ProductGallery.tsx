@@ -1,15 +1,29 @@
+"use client";
+
 import * as React from "react";
 import { Box, ImageList, ImageListItem, CardMedia } from "@mui/material";
 import Image from "next/image";
 
-const images = [
-  { id: 1, src: "/images/pink-dna.png", label: "รูป 1" },
-  { id: 2, src: "/images/heart-beat.png", label: "รูป 2" },
-  { id: 3, src: "/images/article.png", label: "รูป 3" },
-];
+export interface GalleryImage {
+  id: number;
+  src: string;
+  label: string;
+}
 
-function ProductGallery() {
-  const [selected, setSelected] = React.useState(images[0]);
+interface ProductGalleryProps {
+  images: GalleryImage[];
+  initialSelectedId?: number;
+}
+
+function ProductGallery({ images, initialSelectedId }: ProductGalleryProps) {
+  const initialImage =
+    images.find((img) => img.id === initialSelectedId) || images[0];
+
+  const [selected, setSelected] = React.useState<GalleryImage>(initialImage);
+
+  if (!images || images.length === 0) {
+    return <Box sx={{ textAlign: "center", p: 4 }}>ไม่มีรูปภาพ</Box>;
+  }
 
   return (
     <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
@@ -24,7 +38,7 @@ function ProductGallery() {
             height: "430px",
             borderRadius: 2,
             objectFit: "cover",
-            bgcolor: "#F2F8FD", 
+            bgcolor: "#F2F8FD",
           }}
         />
       </Box>
@@ -49,15 +63,14 @@ function ProductGallery() {
                 objectFit: "cover",
                 border:
                   selected.id === item.id
-                    ? "1px solid #1976d2"
-                    : "1px solid transparent",
+                    ? "2px solid #1976d2"
+                    : "1px solid transparent ",
                 borderRadius: "8px",
+                opacity: selected.id === item.id ? 1 : 0.5,
               }}
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).style.background =
-                  "#F2F8FD"; 
-                (e.currentTarget as HTMLImageElement).style.content =
-                  '"🚫"';
+                  "#F2F8FD";
               }}
             />
           </ImageListItem>
@@ -66,4 +79,5 @@ function ProductGallery() {
     </Box>
   );
 }
+
 export default ProductGallery;

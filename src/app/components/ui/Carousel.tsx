@@ -11,16 +11,19 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
-const items = [
-  { id: 1, text: "Card 1" },
-  { id: 2, text: "Card 2" },
-  { id: 3, text: "Card 3" },
-  { id: 4, text: "Card 4" },
-  { id: 5, text: "Card 5" },
-];
+interface CarouselItemProps {
+  id: number;
+  image_url: string;
+  title?: string;
+}
 
-export function CardCarousel() {
+interface CardCarouselProps {
+  items: CarouselItemProps[];
+}
+
+export function CardCarousel({ items }: CardCarouselProps) {
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
@@ -41,13 +44,25 @@ export function CardCarousel() {
             <CarouselItem
               key={item.id}
               className="
-                basis-full      /*  Mobile: 1 ใบ */
-                sm:basis-full    /*  Tablet: 2 ใบ */
-                lg:basis-1/3    /*  Desktop: 3 ใบ */
+                basis-full      /* Mobile: 1 ใบ */
+                sm:basis-1/2    /* Tablet: 2 ใบ */
+                lg:basis-1/3    /* Desktop: 3 ใบ */
               "
             >
-              <Card className="h-120 flex items-center justify-center bg-gray-200">
-                <CardContent>{item.text}</CardContent>
+              <Card className="h-80 overflow-hidden rounded-xl">
+                <CardContent className="relative h-full w-full p-0">
+                  <Image
+                    src={item.image_url}
+                    alt={item.title || "carousel image"}
+                    fill
+                    className="object-cover"
+                  />
+                  {item.title && (
+                    <div className="absolute bottom-0 left-0 w-full bg-white/70 text-neutral-800 text-xl font-semibold text-center py-2">
+                      {item.title}
+                    </div>
+                  )}
+                </CardContent>
               </Card>
             </CarouselItem>
           ))}
@@ -62,6 +77,7 @@ export function CardCarousel() {
         {Array.from({ length: Math.ceil(items.length / 3) }).map((_, i) => (
           <button
             key={i}
+            onClick={() => setCurrent(i)}
             className={cn(
               "w-2.5 h-2.5 rounded-full transition-colors",
               current === i

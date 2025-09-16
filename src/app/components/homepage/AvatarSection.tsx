@@ -2,8 +2,14 @@ import React from "react";
 import AvatarCard from "./AvatarCard";
 import Image from "next/image";
 import doctor1 from "@/app/assets/images/doctor1.png";
+import { useRouter } from "next/navigation";
 
 function AvatarSection() {
+    const router = useRouter()
+
+    const handleGoToAboutUsPage = () => {
+        router.push('/aboutUs')
+    }
     return (
         <div className="py-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -68,7 +74,7 @@ function AvatarSection() {
                         </h2>
                     </div>
 
-                    <AvatarCard />
+                    <AvatarCard onDetail={handleGoToAboutUsPage}/>
                 </div>
             </div>
         </div>

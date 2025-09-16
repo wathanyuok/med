@@ -18,9 +18,9 @@ function Navigation() {
   const navItems = [
     { label: "แพคเกจสุขภาพ", href: "/package" },
     { label: "แผนก", href: "/department" },
-    { label: "บทความ", href: "/articles" },
+    { label: "บทความ", href: "/blog" },
     { label: "AI วิเคราะห์ผล", href: "/ai" },
-    { label: "เกี่ยวกับเรา", href: "/about" },
+    { label: "เกี่ยวกับเรา", href: "/aboutUs" },
     { label: "ติชมบริการ", href: "/feedback" },
     { label: "เข้าสู่ระบบ", href: "/login", type: "login-btn" },
   ];
