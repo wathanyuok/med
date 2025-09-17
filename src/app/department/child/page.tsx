@@ -7,14 +7,14 @@ import ArticleSection from "../../components/homepage/ArticleSection";
 import TechnologyCard from "../../components/departmentPage/TechnologyCard";
 import { technologyCards } from "../../utils/mockData/technologies";
 import TriSection from "../../components/departmentPage/TriSection";
-import ClearCArdHero from "@/app/assets/images/department_child/department_child_hero_clear_card.svg"
-import Item1 from "@/app/assets/images/department_child/department_child_item_1.svg"
-import Item2 from "@/app/assets/images/department_child/department_child_item_2.svg"
-import Item3 from "@/app/assets/images/department_child/department_child_item_3.svg"
-import Item4 from "@/app/assets/images/department_child/department_child_item_4.svg"
-import Hero1 from "@/app/assets/images/department_child/department_child_hero_1.svg"
-import Hero2 from "@/app/assets/images/department_child/department_child_hero_2.svg"
-import Hero3 from "@/app/assets/images/department_child/department_child_hero_3.svg"
+import ClearCArdHero from "@/app/assets/images/department_child/department_child_hero_clear_card.png"
+import Item1 from "@/app/assets/images/department_child/department_child_item_1.png"
+import Item2 from "@/app/assets/images/department_child/department_child_item_2.png"
+import Item3 from "@/app/assets/images/department_child/department_child_item_3.png"
+import Item4 from "@/app/assets/images/department_child/department_child_item_4.png"
+import Hero1 from "@/app/assets/images/department_child/department_child_hero_1.png"
+import Hero2 from "@/app/assets/images/department_child/department_child_hero_2.png"
+import Hero3 from "@/app/assets/images/department_child/department_child_hero_3.png"
 import Image from "next/image";
 import ClearCardSection from "@/app/components/departmentPage/ClearCardSection";
 import { departmentChildClearCardData } from "@/app/utils/mockData/department";
