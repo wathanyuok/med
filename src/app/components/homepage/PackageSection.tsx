@@ -22,7 +22,7 @@ function PackageSection() {
     
     return (
         <div>
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start container mx-auto px-4">
                 <div className="pb-8">
                     <h3 className="text-2xl md:text-3xl text-neutral-800 font-semibold text-start">
                         แพคเกจสุขภาพสำหรับคุณ

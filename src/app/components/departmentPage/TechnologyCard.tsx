@@ -37,6 +37,7 @@ function TechnologyCard({ title, subtitle, imageUrl, onClick }: TechnologyCardPr
           <ArrowRight size={18} />
         </button>
       </div>
+      
     </div>
   );
 }

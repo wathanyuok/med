@@ -1,52 +1,9 @@
 import React from "react";
-import { icons } from "@/app/assets/icons/homepageIcons";
 import ServiceCard from "./ServiceCard";
-
-type IconKey = keyof typeof icons;
+import { services } from "@/app/utils/mockData/services";
 
 function ServiceSection() {
-    const services: { icon: IconKey; th_name: string; eng_name: string }[] = [
-        {
-            icon: "VerifyProfileIcon",
-            th_name: "ตรวจสุขภาพครบวงจร",
-            eng_name: "Advanced Screening & Diagnostics",
-        },
-        {
-            icon: "AdolescentWellnessDevelopment",
-            th_name: "พัฒนาการเด็กและวัยรุ่น",
-            eng_name: "Adolescent Wellness & Development",
-        },
-        {
-            icon: "WomenHealthScreening",
-            th_name: "สุขภาพสตรี",
-            eng_name: "Women’s Health & Screening",
-        },
-        {
-            icon: "SportsMedicineRehabilitation",
-            th_name: "เวชศาสตร์กีฬาและการฟื้นฟู",
-            eng_name: "Sports Medicine & Rehabilitation",
-        },
-        {
-            icon: "BoneJoint",
-            th_name: "ศูนย์กระดูกและข้อ",
-            eng_name: "Bone and Joint Center",
-        },
-        {
-            icon: "AestheticDermatology",
-            th_name: "สุขภาพและความงาม",
-            eng_name: "Aesthetic & Dermatology",
-        },
-        {
-            icon: "ComprehensiveDental",
-            th_name: "ทันตกรรมครบวงจร",
-            eng_name: "Comprehensive Dental",
-        },
-        {
-            icon: "SpecializedEye",
-            th_name: "ศูนย์จักษุเฉพาะทาง",
-            eng_name: "Specialized Eye Care Center",
-        },
-    ];
+
 
     return (
         <div className="bg-sky">
@@ -63,6 +20,7 @@ function ServiceSection() {
                                 icon={service.icon}
                                 th_name={service.th_name}
                                 eng_name={service.eng_name}
+                                href={service.href}
                             />
                         );
                     })}

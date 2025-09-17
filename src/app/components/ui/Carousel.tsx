@@ -3,91 +3,102 @@
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    type CarouselApi,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface CarouselItemProps {
-  id: number;
-  image_url: string;
-  title?: string;
+    id: number;
+    image_url: string;
+    title?: string;
 }
 
 interface CardCarouselProps {
-  items: CarouselItemProps[];
-  doNotShowTitle?: boolean;
+    items: CarouselItemProps[];
+    doNotShowTitle?: boolean;
 }
 
-export function CardCarousel({ items, doNotShowTitle = false }: CardCarouselProps) {
-  const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
-  );
+export function CardCarousel({
+    items,
+    doNotShowTitle = true,
+}: CardCarouselProps) {
+    const plugin = React.useRef(
+        Autoplay({ delay: 5000, stopOnInteraction: true })
+    );
 
-  const [current, setCurrent] = React.useState(0);
+    const [current, setCurrent] = React.useState(0);
+    const [api, setApi] = React.useState<CarouselApi | null>(null);
 
-  return (
-    <div className="w-full mx-auto">
-      <Carousel
-        plugins={[plugin.current]}
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-      >
-        <CarouselContent>
-          {items.map((item) => (
-            <CarouselItem
-              key={item.id}
-              className="
-                basis-full      /* Mobile: 1 ใบ */
-                sm:basis-1/2    /* Tablet: 2 ใบ */
-                lg:basis-1/3    /* Desktop: 3 ใบ */
-              "
+    React.useEffect(() => {
+        if (!api) return;
+        // อัปเดต current index เวลาเปลี่ยนสไลด์
+        setCurrent(api.selectedScrollSnap());
+        api.on("select", () => setCurrent(api.selectedScrollSnap()));
+    }, [api]);
+
+    return (
+        <div className="w-full mx-auto">
+            <Carousel
+                plugins={[plugin.current]}
+                opts={{
+                    align: "center", 
+                    loop: true,
+                }}
+                setApi={setApi} 
             >
-              <Card className="h-80 overflow-hidden rounded-xl">
-                <CardContent className="relative h-full w-full p-0">
-                  <Image
-                    src={item.image_url}
-                    alt={item.title || "carousel image"}
-                    fill
-                    className="object-cover"
-                  />
-                  {!doNotShowTitle && item.title && (
-                    <div className="absolute bottom-0 left-0 w-full bg-white/70 text-neutral-800 text-xl font-semibold text-center py-2">
-                      {item.title}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
+                <CarouselContent>
+                    {items.map((item, index) => (
+                        <CarouselItem
+                            key={item.id}
+                            className="basis-4/5 sm:basis-2/3 lg:basis-1/2 px-2"
+                        >
+                            <Card
+                                className={cn(
+                                    "h-[450px] overflow-hidden rounded-2xl shadow-md transition-all duration-300",
+                                    current === index
+                                        ? "scale-100 opacity-100"
+                                        : "scale-100 opacity-50"
+                                )}
+                            >
+                                <CardContent className="relative h-full w-full p-0">
+                                    <Image
+                                        src={item.image_url}
+                                        alt={item.title || "carousel image"}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                    {!doNotShowTitle && item.title && (
+                                        <div className="absolute bottom-0 left-0 w-full bg-white/70 text-neutral-800 text-xl font-semibold text-center py-2">
+                                            {item.title}
+                                        </div>
+                                    )}
+                                </CardContent>
+                            </Card>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+            </Carousel>
 
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-
-      {/* Pagination Dots */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {Array.from({ length: Math.ceil(items.length / 3) }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={cn(
-              "w-2.5 h-2.5 rounded-full transition-colors",
-              current === i
-                ? "bg-blue-500"
-                : "bg-gray-300 hover:bg-gray-400"
-            )}
-          />
-        ))}
-      </div>
-    </div>
-  );
+            {/* Custom Pagination */}
+            <div className="flex justify-center mt-6 space-x-3">
+                {items.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => api && api.scrollTo(i)}
+                        className={cn(
+                            "transition-all",
+                            current === i
+                                ? "w-8 h-1 rounded-full bg-bright-blue cursor-pointer"
+                                : "w-8 h-1 rounded-full bg-neutral-300 cursor-pointer"
+                        )}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }

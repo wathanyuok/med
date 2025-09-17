@@ -10,22 +10,21 @@ import PackageSection from "./components/homepage/PackageSection";
 export default function Home() {
     return (
         <div>
-
             <div className="container mx-auto px-4">
                 {/* AnalyzeHealth */}
                 <div className="mt-40">
                     <AnalyzeHealthSection />
                 </div>
 
+            </div>
+
+            <div>
                 <div className="pb-10 pt-18">
-                    <PackageSection/>
+                    <PackageSection />
                 </div>
+            </div>
 
-                {/* Lab */}
-                {/* <div className="py-12">
-                    <LabSection />
-                </div> */}
-
+            <div className="container mx-auto px-4">
                 {/* Benefit */}
                 <div className="">
                     <BenefitSection />
@@ -55,8 +54,6 @@ export default function Home() {
                     <AdviceSection />
                 </div> */}
             </div>
-
-           
         </div>
     );
 }

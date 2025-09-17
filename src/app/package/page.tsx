@@ -41,9 +41,12 @@ function PackageListPage() {
     });
 
     return (
-        <div className="py-40 container mx-auto px-4">
-            {/* Carousel */}
+        <div className="py-40">
             <CardCarousel items={packagesData} />
+
+            <div className=" container mx-auto px-4">
+            {/* Carousel */}
+            
 
             {/* Title */}
             <h3 className="text-neutral-800 text-3xl font-semibold mb-6">
@@ -90,6 +93,8 @@ function PackageListPage() {
                 ))}
             </div>
         </div>
+        </div>
+        
     );
 }
 

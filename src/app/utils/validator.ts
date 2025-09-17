@@ -1,4 +1,4 @@
-export function validateForm<T extends Record<string, any>>(
+export function validateForm<T extends object>(
   formData: T,
   requiredFields: (keyof T)[],
   extraRules?: (() => Partial<Record<keyof T | "general", string>> | null)[]
@@ -35,7 +35,7 @@ export function validateForm<T extends Record<string, any>>(
     }
   });
 
-  // ตรวจ rule เสริม
+  // ตรวจ rule เพิ่ม
   if (extraRules) {
     for (const rule of extraRules) {
       const result = rule();
