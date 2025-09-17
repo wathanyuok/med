@@ -21,9 +21,10 @@ interface CarouselItemProps {
 
 interface CardCarouselProps {
   items: CarouselItemProps[];
+  doNotShowTitle?: boolean;
 }
 
-export function CardCarousel({ items }: CardCarouselProps) {
+export function CardCarousel({ items, doNotShowTitle = false }: CardCarouselProps) {
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
@@ -57,7 +58,7 @@ export function CardCarousel({ items }: CardCarouselProps) {
                     fill
                     className="object-cover"
                   />
-                  {item.title && (
+                  {!doNotShowTitle && item.title && (
                     <div className="absolute bottom-0 left-0 w-full bg-white/70 text-neutral-800 text-xl font-semibold text-center py-2">
                       {item.title}
                     </div>

@@ -18,12 +18,15 @@ function ArticleSection() {
     return (
         <div>
             {/* Header */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-800 font-semibold leading-snug">
+            <div className="flex sm:flex-row justify-between items-start sm:items-center gap-4">
+                {/* Title */}
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-800 font-semibold leading-snug text-center sm:text-left">
                     บทความที่น่าสนใจ
                 </h3>
+
+                {/* Button */}
                 <div
-                    className="cursor-pointer hover:scale-105 transition duration-300"
+                    className="cursor-pointer hover:scale-105 transition duration-300 self-center sm:self-auto"
                     onClick={handleOnAllBlog}
                 >
                     <div className="flex items-center gap-2 sm:gap-3 md:gap-4">

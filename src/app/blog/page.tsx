@@ -6,6 +6,7 @@ import ChipSelector from "../components/ui/ChipSelector";
 import ArticleCard from "../components/homepage/ArticleCard";
 import { useRouter } from "next/navigation";
 import { articles } from "../utils/mockData/articles";
+import SortSelection from "../components/ui/SortSelection";
 
 const options = [
     { id: 9, value: "แผนกทั้งหมด" },
@@ -59,6 +60,15 @@ function BlogPage() {
                     </div>
                 </div>
 
+                <div className=" mb-8 flex items-center gap-4">
+                    <p className="text-md md:text-lg lg:text-xl font-semibold text-bright-blue">
+                        เรียงตาม
+                    </p>
+                    <div className="min-w-[250px]">
+                        <SortSelection />
+                    </div>
+                </div>
+
                 {/* Articles grid */}
                 <div
                     className="
@@ -75,7 +85,7 @@ function BlogPage() {
                             image={article.imageUrl}
                             title={article.title}
                             detail={article.excerpt}
-                            onDetail={()=> handleDetail(article.id)}
+                            onDetail={() => handleDetail(article.id)}
                         />
                     ))}
                 </div>

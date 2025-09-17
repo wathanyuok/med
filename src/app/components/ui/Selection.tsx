@@ -18,6 +18,7 @@ export interface SelectionInterface {
     value: string;
   }[];
   classNameSelectTrigger?: string;
+  classNameSelectionItem?: string;
   value?: string;
   onChange?: (val: string) => void;
 }
@@ -27,6 +28,7 @@ function Selection({
   placeholder = "กรุณาเลือก",
   options,
   classNameSelectTrigger,
+  classNameSelectionItem,
   value,
   onChange,
 }: SelectionInterface) {
@@ -40,10 +42,10 @@ function Selection({
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            {label && <SelectLabel className="text-lg">{label}</SelectLabel>}
+            {label && <SelectLabel className={`${classNameSelectionItem}`}>{label}</SelectLabel>}
             {options?.map((option) => (
               <SelectItem
-                className="cursor-pointer text-lg"
+                className={`cursor-pointer ${classNameSelectionItem}`}
                 value={option.value}
                 key={option.id}
               >

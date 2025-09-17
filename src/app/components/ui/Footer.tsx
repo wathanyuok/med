@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./Logo";
+import Link from "next/link"; 
 import { Facebook, TikTok } from "@/app/assets/icons/homepageIcons";
 
 function Footer() {
@@ -9,10 +10,10 @@ function Footer() {
   ];
 
   const services = [
-    "แพคเภจสุขภาพ",
-    "บทความ",
-    "เกี่ยวกับเรา",
-    "AI วิเคราะห์ผล",
+    { label: "แพคเภจสุขภาพ", href: "/package" },
+    { label: "บทความ", href: "/blog" },
+    { label: "เกี่ยวกับเรา", href: "/aboutUs" },
+    { label: "AI วิเคราะห์ผล", href: "/ai" }
   ];
 
   return (
@@ -34,12 +35,12 @@ function Footer() {
             <ul className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-12 text-center lg:text-left">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a
-                    href="#"
+                  <Link
+                    href={service.href || ""}
                     className="text-lg sm:text-xl hover:underline transition duration-300"
                   >
-                    {service}
-                  </a>
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -47,14 +48,14 @@ function Footer() {
             {/* Social links */}
             <div className="flex flex-wrap justify-center gap-4 sm:gap-12">
               {socialLinks.map((social, index) => (
-                <a
+                <Link
                   key={index}
                   href={social.href}
                   className="rounded-lg hover:bg-primary hover:text-white hover:underline transition duration-300 flex items-center justify-center gap-2"
                 >
                   <span className="text-lg sm:text-xl">{social.label}</span>
                   {social.icon}
-                </a>
+                </Link>
               ))}
             </div>
 

@@ -7,6 +7,7 @@ import PackageCard from "@/app/components/packagePage/PackageCard";
 import Selection from "@/app/components/ui/Selection";
 import ChipSelector from "@/app/components/ui/ChipSelector";
 import { packages } from "../utils/mockData/packages";
+import SortSelection from "../components/ui/SortSelection";
 
 const options = [
     { id: 9, value: "แผนกทั้งหมด" },
@@ -42,7 +43,7 @@ function PackageListPage() {
     return (
         <div className="py-40 container mx-auto px-4">
             {/* Carousel */}
-            <CardCarousel items={packagesData}/>
+            <CardCarousel items={packagesData} />
 
             {/* Title */}
             <h3 className="text-neutral-800 text-3xl font-semibold mb-6">
@@ -64,6 +65,15 @@ function PackageListPage() {
                 {/* Tablet+ = Chips */}
                 <div className="hidden md:block">
                     <ChipSelector options={options} defaultSelectedId={9} />
+                </div>
+            </div>
+
+            <div className=" mb-8 flex items-center gap-4">
+                <p className="text-md md:text-lg lg:text-xl font-semibold text-bright-blue">
+                    เรียงตาม
+                </p>
+                <div className="min-w-[250px]">
+                    <SortSelection />
                 </div>
             </div>
 
