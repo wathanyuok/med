@@ -62,7 +62,7 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
                         alt={article.title}
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover object-top"
                     />
                 </div>
             ) : (

@@ -7,6 +7,7 @@ import ArticleCard from "../components/homepage/ArticleCard";
 import { useRouter } from "next/navigation";
 import { articles } from "../utils/mockData/articles";
 import SortSelection from "../components/ui/SortSelection";
+import BlogCard from "../components/homepage/BlogCard";
 
 const options = [
     { id: 9, value: "แผนกทั้งหมด" },
@@ -75,11 +76,11 @@ function BlogPage() {
                     grid grid-cols-1
                     md:grid-cols-2
                     lg:grid-cols-3
-                    gap-4 sm:gap-6 lg:gap-8
+                    gap-2 sm:gap-4 lg:gap-4
                     mt-6 sm:mt-6 lg:mt-8"
                 >
                     {articles.map((article, idx) => (
-                        <ArticleCard
+                        <BlogCard
                             key={idx}
                             id={article.id}
                             image={article.imageUrl}

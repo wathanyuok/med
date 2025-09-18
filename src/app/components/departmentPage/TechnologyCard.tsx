@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "next/image";
+import Image, {StaticImageData} from "next/image";
 import { ArrowRight } from "lucide-react";
 
 interface TechnologyCardProps {
   title: string;
   subtitle: string;
-  imageUrl: string;
+  imageUrl: string | StaticImageData;
   onClick?: () => void;
 }
 
@@ -21,7 +21,7 @@ function TechnologyCard({ title, subtitle, imageUrl, onClick }: TechnologyCardPr
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
+      <div className="absolute inset-0 bg-black/20 flex flex-col items-center justify-center text-center px-6">
         <h3 className="text-white text-xl md:text-2xl font-semibold">
           {title}
         </h3>
