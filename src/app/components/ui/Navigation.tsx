@@ -2,18 +2,13 @@
 
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
+import Link from "next/link";
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-
-  // กัน hydration mismatch (SSR vs CSR)
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const navItems = [
     { label: "แพคเกจสุขภาพ", href: "/package" },
@@ -25,8 +20,6 @@ function Navigation() {
     { label: "เข้าสู่ระบบ", href: "/login", type: "login-btn" },
   ];
 
-  // render หลัง client mount เท่านั้น
-  if (!mounted) return null;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-100 shadow-lg border-b border-white/10 p-6 md:p-8">
@@ -54,7 +47,7 @@ function Navigation() {
             {navItems.map((item) => {
               const isActive = pathname === item.href;
               return (
-                <a
+                <Link
                   key={item.label}
                   href={item.href}
                   className={`
@@ -69,7 +62,7 @@ function Navigation() {
                   `}
                 >
                   {item.label}
-                </a>
+                </Link>
               );
             })}
           </div>

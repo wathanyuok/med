@@ -16,7 +16,7 @@ export function formatThaiDate(dateString: string): string {
   return `${dayMonth} ${buddhistYear}`;
 }
 
-export function formatDate(date: Date | undefined) {
+export function formatDate(date: Date | undefined ) {
   if (!date) return ""
 
   const buddhistYear = date.getFullYear() + 543
