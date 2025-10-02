@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight } from "@/app/assets/icons/homepageIcons";
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 
@@ -8,11 +7,10 @@ interface ABlogCardProps {
   id: number;
   image: string | StaticImageData;
   title: string;
-  detail: string;
   onDetail?: () => void;
 }
 
-function BlogCard({ image, title, detail, onDetail }: ABlogCardProps) {
+function BlogCard({ image, title, onDetail }: ABlogCardProps) {
   return (
     <div
       onClick={onDetail}

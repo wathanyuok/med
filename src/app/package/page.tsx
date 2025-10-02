@@ -29,34 +29,9 @@ function PackageListPage() {
   const [selectedId, setSelectedId] = useState<number>(9);
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
 
-  const toNumber = (val: any): number => {
-    if (typeof val === "number") return val;
-
-    if (typeof val === "string") {
-      const num = Number(val);
-      if (!Number.isNaN(num)) return num; 
-      const found = options.find((o) => o.value === val); 
-      return found ? found.id : 9;
-    }
-
-    if (val && typeof val === "object") {
-      if (typeof val.id === "number") return val.id;
-      if (typeof val.id === "string") {
-        const num = Number(val.id);
-        if (!Number.isNaN(num)) return num;
-      }
-      if ("value" in val) {
-        const found = options.find((o) => o.value === (val as any).value);
-        if (found) return found.id;
-      }
-    }
-    return 9;
-  };
-
-  const handleCategoryChange = (v: any) => setSelectedId(toNumber(v));
 
   const filteredPackages = useMemo(() => {
-    let data =
+    const data =
       selectedId === 9
         ? [...packages]
         : packages.filter((p) => Number(p.categoryId) === Number(selectedId));
@@ -73,9 +48,6 @@ function PackageListPage() {
   const handleDetailClick = (id: number) => router.push(`/package/${id}`);
   const handleBuyPackage = (id: number) => router.push(`/payment/${id}`);
 
-  // 👉 label ปัจจุบันสำหรับ mobile Selection
-  const currentCategoryLabel =
-    options.find((o) => o.id === selectedId)?.value ?? "แผนกทั้งหมด";
 
   return (
     <div className="py-40">
@@ -100,8 +72,8 @@ function PackageListPage() {
               label=""
               placeholder="แผนกทั้งหมด"
               options={options}
-              value={currentCategoryLabel}
-              onChange={handleCategoryChange}
+              value={selectedId}
+              onChange={(val) => setSelectedId(val)}
               classNameSelectTrigger="!text-lg"
             />
           </div>
@@ -111,7 +83,7 @@ function PackageListPage() {
             <ChipSelector
               options={options}
               value={selectedId}
-              onChange={handleCategoryChange}
+              onChange={(id) => setSelectedId(id)}
               defaultSelectedId={9}
             />
           </div>

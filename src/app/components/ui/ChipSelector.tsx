@@ -10,17 +10,25 @@ interface Option {
 interface ChipSelectorProps {
   options: Option[];
   defaultSelectedId?: number;
-  onChange?: (selected: Option) => void;
+  value?: number;
+  onChange?: (id: number) => void;
 }
 
-function ChipSelector({ options, defaultSelectedId, onChange }: ChipSelectorProps) {
-  const [selectedId, setSelectedId] = useState<number | null>(
+function ChipSelector({
+  options,
+  defaultSelectedId,
+  value,
+  onChange,
+}: ChipSelectorProps) {
+  const [internalValue, setInternalValue] = useState<number | null>(
     defaultSelectedId ?? null
   );
 
+  const selectedId = value ?? internalValue;
+
   const handleSelect = (option: Option) => {
-    setSelectedId(option.id);
-    if (onChange) onChange(option);
+    if (onChange) onChange(option.id);     
+    if (value === undefined) setInternalValue(option.id);
   };
 
   return (
@@ -30,6 +38,7 @@ function ChipSelector({ options, defaultSelectedId, onChange }: ChipSelectorProp
         return (
           <button
             key={option.id}
+            type="button"
             onClick={() => handleSelect(option)}
             className={`px-4 py-2 rounded-full border transition hover:bg-blue-100 text-neutral-800 hover:scale-105 cursor-pointer
               ${

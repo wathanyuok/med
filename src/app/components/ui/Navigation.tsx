@@ -1,25 +1,27 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
+import { DropdownMenuApp } from "./DropdownMenuApp";
+import { services } from "@/app/utils/mockData/services";
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDeptOpen, setIsDeptOpen] = useState(false);
   const pathname = usePathname();
 
   const navItems = [
     { label: "แพคเกจสุขภาพ", href: "/package" },
-    { label: "แผนก", href: "/department" },
+    { label: "แผนก", href: "/department", type: "dropdown" },
     { label: "บทความ", href: "/blog" },
     { label: "AI วิเคราะห์ผล", href: "/ai" },
     { label: "เกี่ยวกับเรา", href: "/aboutUs" },
     { label: "ติชมบริการ", href: "/feedback" },
     { label: "เข้าสู่ระบบ", href: "/login", type: "login-btn" },
   ];
-
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-100 shadow-lg border-b border-white/10 p-6 md:p-8">
@@ -42,9 +44,15 @@ function Navigation() {
             <Logo />
           </div>
 
-          {/* Desktop Navigation */}
+          {/* ✅ Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
+              if (item.type === "dropdown") {
+                return (
+                  <DropdownMenuApp label="แผนก" key={item.label} />
+                );
+              }
+
               const isActive = pathname === item.href;
               return (
                 <Link
@@ -52,10 +60,9 @@ function Navigation() {
                   href={item.href}
                   className={`
                     transition duration-300 font-medium relative cursor-pointer
-                    ${
-                      item.type === "login-btn"
-                        ? "bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105"
-                        : isActive
+                    ${item.type === "login-btn"
+                      ? "bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105"
+                      : isActive
                         ? "text-exa-pink font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-100 after:origin-left after:transition-transform"
                         : "text-foreground hover:text-exa-pink after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform"
                     }
@@ -70,9 +77,7 @@ function Navigation() {
 
         {/* ✅ Mobile Navigation */}
         {isMenuOpen && (
-          <div
-            className="md:hidden fixed top-0 left-0 h-screen w-2/3 max-w-xs bg-neutral-100 shadow-lg z-40 transform transition-transform duration-300 ease-in-out translate-x-0"
-          >
+          <div className="md:hidden fixed top-0 left-0 h-screen w-2/3 max-w-xs bg-neutral-100 shadow-lg z-40 transform transition-transform duration-300 ease-in-out translate-x-0">
             <div className="flex flex-col h-full">
               {/* Logo ด้านบน */}
               <div className="px-6 pt-4 pb-2 border-b border-neutral-200">
@@ -84,6 +89,50 @@ function Navigation() {
                 {navItems
                   .filter((item) => item.type !== "login-btn")
                   .map((item) => {
+                    // ถ้าเป็น "แผนก" ให้ทำ accordion
+                    if (item.type === "dropdown") {
+                      return (
+                        <div key={item.label}>
+                          <button
+                            onClick={() => setIsDeptOpen(!isDeptOpen)}
+                            className="flex items-center justify-between w-full font-medium text-foreground hover:text-exa-pink transition duration-200"
+                          >
+                            {item.label}
+                            {isDeptOpen ? (
+                              <ChevronUp className="w-4 h-4 cursor-pointer" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4 cursor-pointer" />
+                            )}
+                          </button>
+
+                          {/* Submenu ของแผนก */}
+                          {isDeptOpen && (
+                            <div className="mt-2 ml-4 flex flex-col space-y-2">
+                              {services.map((service) => {
+                                const isActiveSub = pathname.startsWith(service.href);
+                                return (
+                                  <Link
+                                    key={service.href}
+                                    href={service.href}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className={`
+                                        text-sm transition-colors
+                                        ${isActiveSub
+                                        ? "text-exa-pink"
+                                        : "text-neutral-700 hover:text-exa-pink"}
+                                   `}
+                                  >
+                                    {service.th_name}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          )}
+
+                        </div>
+                      );
+                    }
+
                     const isActive = pathname === item.href;
                     return (
                       <a
@@ -92,10 +141,9 @@ function Navigation() {
                         onClick={() => setIsMenuOpen(false)}
                         className={`
                           transition-colors duration-200 font-medium
-                          ${
-                            isActive
-                              ? "text-exa-pink font-semibold"
-                              : "text-foreground hover:text-exa-pink"
+                          ${isActive
+                            ? "text-exa-pink font-semibold"
+                            : "text-foreground hover:text-exa-pink"
                           }
                         `}
                       >

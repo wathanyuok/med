@@ -12,19 +12,22 @@ interface SortSelectionProps {
 }
 
 function SortSelection({ value, onChange, labels }: SortSelectionProps) {
+  // base mockData: [{ id: 1, value: "asc", label: "..."}, { id: 2, value: "desc", label: "..."}]
   const baseOptions = sortSelection.map((s) => ({
     id: s.id,
     value: s.value as "asc" | "desc",
     label: s.label,
   }));
 
+  // apply custom labels if provided
   const options = baseOptions.map((o) => {
     if (o.value === "asc" && labels?.asc) return { ...o, label: labels.asc };
     if (o.value === "desc" && labels?.desc) return { ...o, label: labels.desc };
     return o;
   });
 
-  const currentLabel = options.find((o) => o.value === value)?.label ?? "";
+  // map current string value ("asc"/"desc") -> id
+  const currentId = options.find((o) => o.value === value)?.id;
 
   return (
     <div
@@ -36,11 +39,11 @@ function SortSelection({ value, onChange, labels }: SortSelectionProps) {
     >
       <Selection
         label=""
-        placeholder={currentLabel}
+        placeholder={options.find((o) => o.value === value)?.label ?? ""}
         options={options.map((o) => ({ id: o.id, value: o.label }))}
-        value={currentLabel}
-        onChange={(selectedLabel: string) => {
-          const found = options.find((o) => o.label === selectedLabel);
+        value={currentId}                        
+        onChange={(selectedId: number) => {     
+          const found = options.find((o) => o.id === selectedId);
           if (found) onChange(found.value);
         }}
         classNameSelectTrigger="
@@ -49,7 +52,6 @@ function SortSelection({ value, onChange, labels }: SortSelectionProps) {
           !text-bright-blue !text-xl !font-semibold
           inline-flex items-center gap-0 hover:underline
 
-          /* ✂️ ตัดขอบ/เงา/ริง ทุกสถานะรวมถึงตอนเมนูเปิดอยู่ */
           ring-0 ring-offset-0 outline-none
           focus:outline-none focus:ring-0 focus:ring-offset-0 focus:shadow-none
           focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:shadow-none

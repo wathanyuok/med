@@ -83,7 +83,7 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
                         สารบัญของเนื้อหา
                     </h2>
                     <ul className="list-decimal list-inside space-y-1 mt-2 text-bright-blue">
-                        {article.topics.map((topic, idx) => (
+                        {article.topics.map((topic) => (
                             <li key={topic.id}>
                                 <a
                                     href={`#topic-${topic.id}`}

@@ -6,11 +6,12 @@ interface ExaBlueBtnInterface {
   href?: string;
   onClick?: () => void;
   btnType?: "submit" | "button";
+  classBtn?: string;
 }
 
-function ExaBlueBtn({ label, href, onClick, btnType='submit' }: ExaBlueBtnInterface) {
+function ExaBlueBtn({ label, href, onClick, btnType='submit', classBtn }: ExaBlueBtnInterface) {
   const className =
-    "font-semibold w-full inline-block text-lg md:text-xl border py-4 px-6 shadow bg-neutral-600 text-neutral-100 rounded-full text-center transition-transform hover:scale-105 duration-300 cursor-pointer";
+    `${classBtn} font-semibold w-full inline-block text-lg md:text-xl border py-4 px-6 shadow bg-neutral-600 text-neutral-100 rounded-full text-center transition-transform hover:scale-105 duration-300 cursor-pointer`;
 
   if (href) {
     return (

@@ -12,7 +12,7 @@ export const articles = [
     authorName: "บรรณาธิการ Exa-med",
     publishedAt: "2024-12-19",
     viewCount: 123456,
-    category: "สุขภาพสตรี",
+    category: "พัฒนาการเด็กและวัยรุ่น",
     categoryId: 2,
     topics: [
       {

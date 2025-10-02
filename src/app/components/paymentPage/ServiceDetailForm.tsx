@@ -93,11 +93,12 @@ function ServiceDetailForm({ formData, onChange, errors }: Props) {
                             label="เลือกคำนำหน้า"
                             placeholder="คำนำหน้า"
                             options={options}
-                            classNameSelectTrigger={`!h-12 !text-lg ${
-                                errors?.prefix ? "border-red-500" : ""
-                            }`}
-                            value={formData.prefix}
-                            onChange={(val) => onChange("prefix", val)}
+                            classNameSelectTrigger={`!h-12 !text-lg ${errors?.prefix ? "border-red-500" : ""}`}
+                            value={options.find((o) => o.value === formData.prefix)?.id}
+                            onChange={(val) => {
+                                const found = options.find((o) => o.id === val);
+                                onChange("prefix", found ? found.value : "");
+                            }}
                         />
                     </FormField>
 

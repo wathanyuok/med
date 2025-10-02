@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { CreditCard, CircleUserRound, ClockFading } from "lucide-react";
 import PathSwitcher from "./PathSwitcher";
 import Link from "next/link";
@@ -23,7 +23,6 @@ const items = [
 
 export function AppSidebar() {
     const pathname = usePathname();
-    const router = useRouter();
 
     return (
         <div className="flex flex-col">

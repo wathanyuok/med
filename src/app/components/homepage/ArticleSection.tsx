@@ -1,8 +1,6 @@
 "use client";
 
-import { ArrowRight } from "@/app/assets/icons/homepageIcons";
 import React from "react";
-import ArticleCard from "./ArticleCard";
 import { articles } from "@/app/utils/mockData/articles";
 import { useRouter } from "next/navigation";
 import BlogCard from "./BlogCard";
@@ -14,8 +12,6 @@ function ArticleSection() {
     const handleOnDetail = (id: number) => {
         router.push(`/blog/${id}`);
     };
-
-    const handleOnAllBlog = () => router.push("/blog");
 
     return (
         <div>
@@ -45,7 +41,6 @@ function ArticleSection() {
                         id={article.id}
                         image={article.imageUrl}
                         title={article.title}
-                        detail={article.excerpt}
                         onDetail={() => handleOnDetail(article.id)}
                     />
                 ))}

@@ -25,37 +25,10 @@ function BlogPage() {
   const router = useRouter();
 
   const [selectedId, setSelectedId] = useState<number>(9);
-  const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc"); 
-
-  const toNumber = (val: any): number => {
-    if (typeof val === "number") return val;
-
-    if (typeof val === "string") {
-      const asNum = Number(val);
-      if (!Number.isNaN(asNum)) return asNum;        
-      const byLabel = options.find((o) => o.value === val);
-      return byLabel ? byLabel.id : 9;                
-    }
-
-    if (val && typeof val === "object") {
-      if (typeof val.id === "number") return val.id;
-      if (typeof val.id === "string") {
-        const asNum = Number(val.id);
-        if (!Number.isNaN(asNum)) return asNum;
-      }
-      if ("value" in val) {
-        const byValue = options.find((o) => o.value === (val as any).value);
-        if (byValue) return byValue.id;
-      }
-    }
-
-    return 9;
-  };
-
-  const handleChange = (v: any) => setSelectedId(toNumber(v));
+  const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
 
   const filteredArticles = useMemo(() => {
-    let data =
+    const data =
       selectedId === 9
         ? [...articles]
         : articles.filter((a) => Number(a.categoryId) === Number(selectedId));
@@ -73,9 +46,6 @@ function BlogPage() {
     router.push(`blog/${id}`);
   };
 
-  const currentCategoryLabel =
-    options.find((o) => o.id === selectedId)?.value ?? "แผนกทั้งหมด";
-
   return (
     <div className="pt-40 container mx-auto px-4 mb-20">
       <h3 className="text-neutral-800 text-3xl font-semibold mb-8">
@@ -90,8 +60,8 @@ function BlogPage() {
             label=""
             placeholder="แผนกทั้งหมด"
             options={options}
-            value={currentCategoryLabel}     
-            onChange={handleChange}
+            value={selectedId}
+            onChange={(val) => setSelectedId(val)}
             classNameSelectTrigger="!text-lg"
           />
         </div>
@@ -101,7 +71,7 @@ function BlogPage() {
           <ChipSelector
             options={options}
             value={selectedId}
-            onChange={handleChange}
+            onChange={(id) => setSelectedId(id)}
             defaultSelectedId={9}
           />
         </div>
@@ -144,7 +114,6 @@ function BlogPage() {
               id={article.id}
               image={article.imageUrl}
               title={article.title}
-              detail={article.excerpt}
               onDetail={() => handleDetail(article.id)}
             />
           ))

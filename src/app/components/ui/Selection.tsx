@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import {
@@ -19,8 +20,8 @@ export interface SelectionInterface {
   }[];
   classNameSelectTrigger?: string;
   classNameSelectionItem?: string;
-  value?: string;
-  onChange?: (val: string) => void;
+  value?: number;                   
+  onChange?: (val: number) => void; 
 }
 
 function Selection({
@@ -34,7 +35,10 @@ function Selection({
 }: SelectionInterface) {
   return (
     <div>
-      <Select value={value} onValueChange={onChange}>
+      <Select
+        value={value !== undefined ? String(value) : undefined}   
+        onValueChange={(val) => onChange?.(Number(val))}         
+      >
         <SelectTrigger
           className={`w-full cursor-pointer bg-white h-10 ${classNameSelectTrigger}`}
         >
@@ -42,11 +46,15 @@ function Selection({
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            {label && <SelectLabel className={`${classNameSelectionItem}`}>{label}</SelectLabel>}
+            {label && (
+              <SelectLabel className={`${classNameSelectionItem}`}>
+                {label}
+              </SelectLabel>
+            )}
             {options?.map((option) => (
               <SelectItem
                 className={`cursor-pointer ${classNameSelectionItem}`}
-                value={option.value}
+                value={String(option.id)} 
                 key={option.id}
               >
                 {option.value}

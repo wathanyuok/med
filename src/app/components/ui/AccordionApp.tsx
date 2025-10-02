@@ -1,4 +1,4 @@
-import { formatDate, formatThaiDate } from "@/app/utils/formatDate";
+import { formatThaiDate } from "@/app/utils/formatDate";
 import {
   Accordion,
   AccordionContent,
