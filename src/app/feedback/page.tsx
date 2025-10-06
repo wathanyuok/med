@@ -55,7 +55,7 @@ function FeedBackPage() {
 
 
             <div>
-              <ExaBlueBtn label="ส่งข้อเสนอแนะ" classBtn="w-full md:!w-1/2" type="submit" />
+              <ExaBlueBtn label="ส่งข้อเสนอแนะ" classBtn="w-full md:!w-1/2" />
             </div>
           </form>
         </div>
