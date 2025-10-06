@@ -1,9 +1,17 @@
+"use client";
+
 import React from "react";
 import ExaBlueBtn from "../components/ui/ExaBlueBtn";
 
 function FeedBackPage() {
   const email = "feedback@exa-med.co";
   const subject = "ข้อเสนอแนะจากผู้ใช้";
+  const body = "กรุณาพิมพ์ข้อเสนอแนะของคุณที่นี่...";
+
+  const handleSendEmail = () => {
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailto, "_blank");
+  };
 
   return (
     <div className="py-40 container mx-auto px-4">
@@ -44,20 +52,14 @@ function FeedBackPage() {
             เรายินดีรับฟังทุกความคิดเห็นด้วยความเคารพและจริงใจ ข้อมูลของท่านจะได้รับการดูแลและนำไปพิจารณาเพื่อปรับปรุงกระบวนการและยกระดับมาตรฐานการบริการของเราต่อไป
           </h2>
 
-          <form
-            action={`mailto:${email}`}
-            method="GET"
-            encType="text/plain"
-            className="grid gap-3"
-          >
-            <input type="hidden" name="subject" value={subject} />
-
-
-
-            <div>
-              <ExaBlueBtn label="ส่งข้อเสนอแนะ" classBtn="w-full md:!w-1/2" />
-            </div>
-          </form>
+          {/* Button */}
+          <div>
+            <ExaBlueBtn
+              label="ส่งข้อเสนอแนะ"
+              classBtn="w-full md:!w-1/2"
+              onClick={handleSendEmail}
+            />
+          </div>
         </div>
       </div>
     </div>
