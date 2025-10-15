@@ -5,6 +5,8 @@ import AboutUsCard from "../components/aboutUsPage/AboutUsCard";
 import ContactUs from "../components/aboutUsPage/ContactUs";
 import Image from "next/image";
 import { doctors } from "../utils/mockData/doctors";
+import AboutUs1 from "@/app/assets/images/about_us/about_us_1.png"
+import AboutUs2 from "@/app/assets/images/about_us/about_us_2.png"
 
 function AboutUsPage() {
     return (
@@ -12,17 +14,29 @@ function AboutUsPage() {
             {/* Hero Section */}
             <div className="pt-28 sm:pt-36 lg:pt-40 container mx-auto px-4">
                 <div className="mb-12">
-                    <div className="rounded-xl sm:rounded-2xl mb-8 sm:mb-12 shadow overflow-hidden">
-                        <div className="relative w-full aspect-[16/9] md:aspect-[21/9]">
-                            <Image
-                                src="https://media.istockphoto.com/id/2179714888/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%94%E0%B8%B4%E0%B8%88%E0%B8%B4%E0%B8%97%E0%B8%B1%E0%B8%A5%E0%B9%83%E0%B8%99%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%81%E0%B8%AB%E0%B9%88%E0%B8%87%E0%B8%AD%E0%B8%99%E0%B8%B2%E0%B8%84%E0%B8%95.jpg?s=2048x2048&w=is&k=20&c=KeGS5kMbzJJUYHU8zvBnKCruWDtd9Vhb6fQeun5GjLQ="
-                                alt="รูปภาพ exa"
-                                fill
-                                priority
-                                className="object-cover"
-                            />
+                    <div className="mb-8 sm:mb-12 overflow-hidden">
+                        <div className="flex flex-col gap-6 md:flex-row">
+                            <div className="relative w-full md:w-1/2 aspect-[16/9] shadow rounded overflow-hidden">
+                                <Image
+                                    src={AboutUs1}
+                                    alt="รูปภาพ exa 1"
+                                    fill
+                                    priority
+                                    className="object-cover"
+                                />
+                            </div>
+                            <div className="relative w-full md:w-1/2 aspect-[16/9] shadow rounded overflow-hidden">
+                                <Image
+                                    src={AboutUs2}
+                                    alt="รูปภาพ exa 2"
+                                    fill
+                                    priority
+                                    className="object-cover"
+                                />
+                            </div>
                         </div>
                     </div>
+
                     <div className="text-center sm:text-left">
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-neutral-900">
                             โรงพยาบาล เอ็กซา-เมด (EXA-MED HOSPITAL)

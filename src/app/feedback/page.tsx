@@ -2,6 +2,8 @@
 
 import React from "react";
 import ExaBlueBtn from "../components/ui/ExaBlueBtn";
+import Image from "next/image";
+import FeedbackImage from "@/app/assets/images/feedback/feedback.png"
 
 function FeedBackPage() {
   const email = "feedback@exa-med.co";
@@ -17,8 +19,13 @@ function FeedBackPage() {
     <div className="py-40 container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Image */}
-        <div className="border rounded-2xl flex items-center justify-center bg-neutral-300 min-h-[240px] md:min-h-[472px] text-neutral-800">
-          Image
+        <div className="border rounded-2xl flex items-center justify-center bg-neutral-300 min-h-[240px] md:min-h-[472px] text-neutral-800 relative overflow-hidden">
+          <Image
+            src={FeedbackImage}
+            alt="feedback image"
+            fill
+            className="object-cover"
+          />
         </div>
 
         {/* Content */}
