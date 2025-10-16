@@ -77,9 +77,9 @@ function AnalyzeHealth() {
                         />
                     </div>
 
-                    <div className=" bg-icy-blue p-8 rounded-xl space-y-4 overflow-hidden">
-                        <div>
-                            <div className="text-neutral-800 text-2xl font-semibold mb-2">
+                    <div className="relative bg-icy-blue p-8 rounded-xl overflow-hidden">
+                        <div className="absolute top-8 left-8 z-30">
+                            <div className="text-neutral-800 text-2xl font-semibold mb-2 leading-snug">
                                 Measured Wellness <br />
                                 สุขภาพดี
                             </div>
@@ -88,24 +88,18 @@ function AnalyzeHealth() {
                             </div>
                         </div>
 
-                        <div className="md:col-span-1 flex items-center justify-center">
+                        <div className="absolute top-36 right-2 flex items-center justify-center">
                             <div className="relative flex items-start">
                                 <div className="relative z-10 scale-80 translate-x-70 -translate-y-40">
                                     <DiscoveryCard />
                                 </div>
-
-                                <div
-                                    className="
-                                                    relative z-20
-                                                    -translate-x-12
-                                                    -translate-y-36
-                                                    scale-80 "
-                                >
+                                <div className="relative z-20 -translate-x-12 -translate-y-36 scale-80">
                                     <RiskCard />
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

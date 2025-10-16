@@ -1,8 +1,8 @@
-import React from 'react'
+import { redirect } from 'next/navigation'
 
 function AiPage() {
   return (
-    <div className="py-40 container mx-auto px-4">AiPage</div>
+    redirect('https://www.exa-med.co/ai')
   )
 }
 

@@ -20,17 +20,17 @@ function Navigation() {
     { label: "AI วิเคราะห์ผล", href: "/ai" },
     { label: "เกี่ยวกับเรา", href: "/aboutUs" },
     { label: "ติชมบริการ", href: "/feedback" },
-    { label: "เข้าสู่ระบบ", href: "/login", type: "login-btn" },
+    { label: "เข้าสู่ระบบ", href: "/", type: "login-btn" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-100 shadow-lg border-b border-white/10 p-6 md:p-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-100 shadow-lg border-b border-white/10 p-6 lg:p-8">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-12">
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-exa-pink transition-colors"
+            className="lg:hidden p-2 text-foreground hover:text-exa-pink transition-colors"
           >
             {isMenuOpen ? (
               <X className="w-6 h-6 transition-transform duration-300 rotate-180" />
@@ -40,12 +40,12 @@ function Navigation() {
           </button>
 
           {/* Logo */}
-          <div className="flex-1 flex justify-center md:justify-start">
+          <div className="flex-1 flex justify-center lg:justify-start">
             <Logo />
           </div>
 
           {/* ✅ Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
               if (item.type === "dropdown") {
                 return (
@@ -77,7 +77,7 @@ function Navigation() {
 
         {/* ✅ Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden fixed top-0 left-0 h-screen w-2/3 max-w-xs bg-neutral-100 shadow-lg z-40 transform transition-transform duration-300 ease-in-out translate-x-0">
+          <div className="lg:hidden fixed top-0 left-0 h-screen w-2/3 max-w-xs bg-neutral-100 shadow-lg z-40 transform transition-transform duration-300 ease-in-out translate-x-0">
             <div className="flex flex-col h-full">
               {/* Logo ด้านบน */}
               <div className="px-6 pt-4 pb-2 border-b border-neutral-200">

@@ -1,8 +1,8 @@
-import React from 'react'
+import { redirect } from "next/navigation"
 
 function LoginPage() {
   return (
-    <div className="py-40 container mx-auto px-4">LoginPage</div>
+    redirect('/')
   )
 }
 

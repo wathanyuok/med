@@ -19,12 +19,12 @@ function FeedBackPage() {
     <div className="py-40 container mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Image */}
-        <div className="border rounded-2xl flex items-center justify-center bg-neutral-300 min-h-[240px] md:min-h-[472px] text-neutral-800 relative overflow-hidden">
+        <div className="border rounded-2xl flex items-center justify-center bg-neutral-300 min-h-[320px] md:min-h-[500px] text-neutral-800 relative overflow-hidden">
           <Image
             src={FeedbackImage}
             alt="feedback image"
             fill
-            className="object-cover"
+            className="object-cover object-top"
           />
         </div>
 
