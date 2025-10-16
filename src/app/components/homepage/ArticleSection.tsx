@@ -27,10 +27,10 @@ function ArticleSection() {
             <div
                 className="
 
-                grid grid-cols-1
-                md:grid-cols-2
+                grid grid-cols-3
+                md:grid-cols-3
                 lg:grid-cols-3
-                gap-2 sm:gap-4 lg:gap-4
+                gap-2 sm:gap-2 lg:gap-2
                 mt-6 sm:mt-6 lg:mt-8
                 mb-6 sm:mb-6 lg:mb-8"
                 
@@ -39,7 +39,7 @@ function ArticleSection() {
                     <BlogCard
                         key={article.id}
                         id={article.id}
-                        image={article.imageUrl}
+                        image={article.thumbnailImage || article.imageUrl}
                         title={article.title}
                         onDetail={() => handleOnDetail(article.id)}
                     />

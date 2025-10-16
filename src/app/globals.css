@@ -26,6 +26,9 @@
   --color-neutral-600: #465681;
   --color-neutral-800: #10203C;
 
+  --color-primary-60: #0F62FE;
+  --color-cool-gray: #21272A;
+
   --color-sky: #DBF0FF;
   --color-icy-blue: #E7EEFE;
   --color-sidebar-ring: var(--sidebar-ring);

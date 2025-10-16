@@ -22,9 +22,9 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
     }
 
     return (
-        <div className="pt-32 sm:pt-40 pb-16 sm:pb-20 container mx-auto px-4">
+        <div className="pt-32 sm:pt-40 pb-16 sm:pb-20 container mx-auto px-8">
             {/* Category link */}
-            <div className="pb-4 text-base sm:text-xl text-neutral-800 text-center sm:text-left">
+            <div className="pb-4 text-base sm:text-xl text-cool-gray text-center sm:text-left">
                 <Link className="hover:underline cursor-pointer" href={"/blog"}>
                     บทความทั้งหมด
                 </Link>{" "}
@@ -35,17 +35,17 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
             </div>
 
             {/* Title */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 mb-4 sm:mb-6 leading-snug text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cool-gray mb-4 sm:mb-6 leading-snug text-center sm:text-left">
                 {article.title}
             </h1>
 
             {/* Meta Info */}
-            <div className="text-neutral-800 text-sm sm:text-base md:text-lg flex flex-col mb-6">
+            <div className="text-cool-gray text-sm sm:text-base md:text-lg flex flex-col mb-6">
                 <h2 className="font-medium text-center sm:text-left">
                     โดย {article.authorName}
                 </h2>
 
-                <div className="flex justify-center sm:justify-start gap-4 text-neutral-600">
+                <div className="flex justify-center sm:justify-start gap-4 text-cool-gray">
                     <h2>{formatThaiDate(article.publishedAt)}</h2>
                     <h2 className="flex items-center gap-1">
                         <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -62,7 +62,7 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
                         alt={article.title}
                         fill
                         priority
-                        className="object-cover object-top"
+                        className="object-cover object-center"
                     />
                 </div>
             ) : (
@@ -72,17 +72,17 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
             )}
 
             {/* Excerpt */}
-            <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-6">
+            <p className="text-cool-gray text-base sm:text-lg leading-relaxed text-justify mb-6">
                 {article.excerpt}
             </p>
 
             {/* TOC */}
             {article.topics && (
                 <div className="mb-12">
-                    <h2 className="text-2xl font-semibold text-neutral-800">
+                    <h2 className="text-2xl font-semibold text-cool-gray">
                         สารบัญของเนื้อหา
                     </h2>
-                    <ul className="list-decimal list-inside space-y-1 mt-2 text-bright-blue">
+                    <ul className="list-decimal list-inside space-y-1 mt-2 text-primary-60">
                         {article.topics.map((topic) => (
                             <li key={topic.id}>
                                 <a
@@ -103,26 +103,14 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
                     <div
                         key={topic.id}
                         id={`topic-${topic.id}`}
-                        className="scroll-mt-40" // เพิ่ม scroll margin top (พอดีกับ navbar)
+                        className="text-cool-gray scroll-mt-40"
                     >
-                        <h3 className="text-xl sm:text-2xl font-semibold text-neutral-800 mb-2">
+                        <h3 className="text-xl sm:text-2xl font-semibold mb-2">
                             {idx + 1}. {topic.title}
                         </h3>
-
-                        {topic.imageUrl && (
-                            <div className="w-full aspect-[16/9] md:aspect-[16/6] relative rounded-xl sm:rounded-2xl overflow-hidden shadow mb-6">
-                                <Image
-                                    src={topic.imageUrl}
-                                    alt={topic.title}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        )}
-
-                        <p className="text-neutral-600 text-base sm:text-lg leading-relaxed">
+                        <div className="text-cool-gray text-justify">
                             {topic.detail}
-                        </p>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -130,26 +118,28 @@ function BlogDetailPage({ params }: BlogDetailPageProps) {
             {/* References */}
             {article.refers && (
                 <div className="mt-12">
-                    <h2 className="text-2xl font-semibold text-neutral-800">
+                    <h2 className="mb-2 text-2xl font-semibold text-cool-gray">
                         อ้างอิงเนื้อหา
                     </h2>
-                    <div className="space-y-2 mt-2 flex flex-col">
-                        {article.refers.map((refer, idx) => (
-                            <a
-                                key={idx}
-                                href={refer}
-                                target="_blank" // เปิดแท็บใหม่
-                                rel="noopener noreferrer" // security
-                                className="text-bright-blue hover:underline break-words text-base md:text-xl"
-                            >
-                                {idx + 1}. {refer}
-                            </a>
-                        ))}
+                    <div className="text-cool-gray">
+                        {article.refers}
                     </div>
+                    
                 </div>
             )}
 
-            <div className="mb-24" />
+            {/* Remark */}
+            {
+                article.remark && (
+                    <div className="mt-12">
+                        <h2 className="font-semibold text-cool-gray">
+                            หมายเหตุ: <span className="font-normal text-cool-gray">{article.remark || ""}</span>
+                        </h2>
+                    </div>
+                )
+            }
+
+            <div className="mb-8" />
 
             {/* Related Articles */}
             <div className="mb-12">
