@@ -88,7 +88,7 @@ function AnalyzeHealth() {
                             </div>
                         </div>
 
-                        <div className="absolute top-36 right-2 flex items-center justify-center">
+                        <div className="absolute top-44 right-2 flex items-center justify-center">
                             <div className="relative flex items-start">
                                 <div className="relative z-10 scale-80 translate-x-70 -translate-y-40">
                                     <DiscoveryCard />
