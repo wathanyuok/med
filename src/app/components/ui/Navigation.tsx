@@ -14,6 +14,7 @@ function Navigation() {
   const pathname = usePathname();
 
   const navItems = [
+    { label: "หน้าแรก", href: "/" },
     { label: "แพคเกจสุขภาพ", href: "/package" },
     { label: "แผนก", href: "/department", type: "dropdown" },
     { label: "บทความ", href: "/blog" },
