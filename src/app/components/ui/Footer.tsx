@@ -5,7 +5,7 @@ import { Facebook, TikTok } from "@/app/assets/icons/homepageIcons";
 
 function Footer() {
   const socialLinks = [
-    { icon: <Facebook />, href: "#", label: "Exa-med" },
+    { icon: <Facebook />, href: "https://www.facebook.com/share/1A45bVK3Wr/?mibextid=wwXIfr", label: "Exa-med" },
     { icon: <TikTok />, href: "#", label: "Exa-med.th" },
   ];
 
