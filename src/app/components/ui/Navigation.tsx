@@ -7,7 +7,7 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { DropdownMenuApp } from "./DropdownMenuApp";
 import { services } from "@/app/utils/mockData/services";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "./LanguageSwitcher";   // ✅ เปิดกลับมา
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function Navigation() {
@@ -31,6 +31,7 @@ function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-100 shadow-lg border-b border-white/10 p-6 lg:p-8">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-12">
+          
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -48,17 +49,25 @@ function Navigation() {
             <Logo />
           </div>
 
-          {/* ✅ Desktop Navigation */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
               if (item.type === "dropdown") {
-                return <DropdownMenuApp label={t("nav.department")} key={item.label} />;
+                return (
+                  <DropdownMenuApp
+                    label={t("nav.department")}
+                    key={item.label}
+                  />
+                );
               }
 
               if (item.type === "login-btn") {
                 return (
                   <div key={item.label} className="flex items-center space-x-4">
+                    
+                    {/* ✅ ปุ่มภาษา Desktop */}
                     <LanguageSwitcher />
+
                     <Link
                       href={item.href}
                       className="bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105 transition duration-300 font-medium"
@@ -70,6 +79,7 @@ function Navigation() {
               }
 
               const isActive = pathname === item.href;
+
               return (
                 <Link
                   key={item.label}
@@ -90,16 +100,17 @@ function Navigation() {
           </div>
         </div>
 
-        {/* ✅ Mobile Navigation */}
+        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden fixed top-0 left-0 h-screen w-2/3 max-w-xs bg-neutral-100 shadow-lg z-40 transform transition-transform duration-300 ease-in-out translate-x-0">
             <div className="flex flex-col h-full">
-              {/* Logo ด้านบน */}
+              
+              {/* Logo */}
               <div className="px-6 pt-4 pb-2 border-b border-neutral-200">
                 <Logo />
               </div>
 
-              {/* เมนูกลาง */}
+              {/* Menu list */}
               <div className="flex-1 flex flex-col space-y-4 p-6">
                 {navItems
                   .filter((item) => item.type !== "login-btn")
@@ -122,9 +133,8 @@ function Navigation() {
                           {isDeptOpen && (
                             <div className="mt-2 ml-4 flex flex-col space-y-2">
                               {services.map((service) => {
-                                const isActiveSub = pathname.startsWith(
-                                  service.href
-                                );
+                                const isActiveSub =
+                                  pathname.startsWith(service.href);
                                 return (
                                   <Link
                                     key={service.href}
@@ -150,6 +160,7 @@ function Navigation() {
                     }
 
                     const isActive = pathname === item.href;
+
                     return (
                       <Link
                         href={item.href}
@@ -170,9 +181,12 @@ function Navigation() {
                   })}
               </div>
 
-              {/* ปุ่มเปลี่ยนภาษา + Login ล่างสุด */}
+              {/* Bottom section (Language + Login) */}
               <div className="p-6 border-t border-neutral-200 space-y-4">
+                
+                {/* ✅ ปุ่มภาษา Mobile */}
                 <LanguageSwitcher />
+
                 <Link
                   href="/login"
                   onClick={() => setIsMenuOpen(false)}
