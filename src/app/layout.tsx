@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Script from "next/script";
-// === import font ===
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import Navigation from "./components/ui/Navigation";
 import Footer from "./components/ui/Footer";
@@ -33,24 +31,6 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <Toaster richColors position="top-right" />
-
-        {/* Google Translate Script */}
-        <Script
-          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-          strategy="afterInteractive"
-        />
-        <Script id="google-translate-init" strategy="afterInteractive">
-          {`
-            function googleTranslateElementInit() {
-              new google.translate.TranslateElement({
-                pageLanguage: 'th',
-                includedLanguages: 'th,en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-              }, 'google_translate_element');
-            }
-          `}
-        </Script>
       </body>
     </html>
   );
