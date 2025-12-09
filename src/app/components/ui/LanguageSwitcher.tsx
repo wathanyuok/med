@@ -29,7 +29,9 @@ export default function LanguageSwitcher() {
     if (checkReady()) return;
 
     const interval = setInterval(() => {
-      if (checkReady()) clearInterval(interval);
+      if (checkReady()) {
+        clearInterval(interval);
+      }
     }, 300);
 
     return () => clearInterval(interval);

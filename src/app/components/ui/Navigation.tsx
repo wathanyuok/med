@@ -7,7 +7,6 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { DropdownMenuApp } from "./DropdownMenuApp";
 import { services } from "@/app/utils/mockData/services";
-import LanguageSwitcher from "./LanguageSwitcher";   // ✅ เปิดกลับมา
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function Navigation() {
@@ -52,6 +51,7 @@ function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
+
               if (item.type === "dropdown") {
                 return (
                   <DropdownMenuApp
@@ -63,18 +63,13 @@ function Navigation() {
 
               if (item.type === "login-btn") {
                 return (
-                  <div key={item.label} className="flex items-center space-x-4">
-                    
-                    {/* ✅ ปุ่มภาษา Desktop */}
-                    <LanguageSwitcher />
-
-                    <Link
-                      href={item.href}
-                      className="bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105 transition duration-300 font-medium"
-                    >
-                      {item.label}
-                    </Link>
-                  </div>
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105 transition duration-300 font-medium"
+                  >
+                    {item.label}
+                  </Link>
                 );
               }
 
@@ -88,8 +83,8 @@ function Navigation() {
                     transition duration-300 font-medium relative cursor-pointer
                     ${
                       isActive
-                        ? "text-exa-pink font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-100 after:origin-left after:transition-transform"
-                        : "text-foreground hover:text-exa-pink after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform"
+                        ? "text-exa-pink font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-100"
+                        : "text-foreground hover:text-exa-pink after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-0 hover:after:scale-x-100"
                     }
                   `}
                 >
@@ -104,17 +99,18 @@ function Navigation() {
         {isMenuOpen && (
           <div className="lg:hidden fixed top-0 left-0 h-screen w-2/3 max-w-xs bg-neutral-100 shadow-lg z-40 transform transition-transform duration-300 ease-in-out translate-x-0">
             <div className="flex flex-col h-full">
-              
+
               {/* Logo */}
               <div className="px-6 pt-4 pb-2 border-b border-neutral-200">
                 <Logo />
               </div>
 
-              {/* Menu list */}
+              {/* Menu Middle */}
               <div className="flex-1 flex flex-col space-y-4 p-6">
                 {navItems
                   .filter((item) => item.type !== "login-btn")
                   .map((item) => {
+
                     if (item.type === "dropdown") {
                       return (
                         <div key={item.label}>
@@ -181,12 +177,8 @@ function Navigation() {
                   })}
               </div>
 
-              {/* Bottom section (Language + Login) */}
+              {/* Bottom login */}
               <div className="p-6 border-t border-neutral-200 space-y-4">
-                
-                {/* ✅ ปุ่มภาษา Mobile */}
-                <LanguageSwitcher />
-
                 <Link
                   href="/login"
                   onClick={() => setIsMenuOpen(false)}
