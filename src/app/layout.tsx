@@ -4,6 +4,7 @@ import { IBM_Plex_Sans_Thai } from "next/font/google";
 import Navigation from "./components/ui/Navigation";
 import Footer from "./components/ui/Footer";
 import { Toaster } from "sonner";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
   subsets: ["thai"],
@@ -27,10 +28,12 @@ export default function RootLayout({
       <body
         className={`antialiased bg-neutral-100 text-neutral-800 transition-all duration-300`}
       >
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
-        <Toaster richColors position="top-right" />
+        <LanguageProvider>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+          <Toaster richColors position="top-right" />
+        </LanguageProvider>
       </body>
     </html>
   );

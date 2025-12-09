@@ -7,22 +7,24 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { DropdownMenuApp } from "./DropdownMenuApp";
 import { services } from "@/app/utils/mockData/services";
-import LanguageSwitcher from "./LanguageSwitcher"; 
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDeptOpen, setIsDeptOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   const navItems = [
-    { label: "หน้าแรก", href: "/" },
-    { label: "แพคเกจสุขภาพ", href: "/package" },
-    { label: "แผนก", href: "/department", type: "dropdown" },
-    { label: "บทความ", href: "/blog" },
-    { label: "AI วิเคราะห์ผล", href: "/ai" },
-    { label: "เกี่ยวกับเรา", href: "/aboutUs" },
-    { label: "ติชมบริการ", href: "/feedback" },
-    { label: "เข้าสู่ระบบ", href: "/login", type: "login-btn" },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.package"), href: "/package" },
+    { label: t("nav.department"), href: "/department", type: "dropdown" },
+    { label: t("nav.blog"), href: "/blog" },
+    { label: t("nav.ai"), href: "/ai" },
+    { label: t("nav.about"), href: "/aboutUs" },
+    { label: t("nav.feedback"), href: "/feedback" },
+    { label: t("nav.login"), href: "/login", type: "login-btn" },
   ];
 
   return (
@@ -50,7 +52,7 @@ function Navigation() {
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
               if (item.type === "dropdown") {
-                return <DropdownMenuApp label="แผนก" key={item.label} />;
+                return <DropdownMenuApp label={t("nav.department")} key={item.label} />;
               }
 
               if (item.type === "login-btn") {
@@ -176,7 +178,7 @@ function Navigation() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block w-full bg-exa-pink text-white font-semibold text-center py-3 rounded-xl hover:bg-exa-pink/80 transition-transform hover:scale-105"
                 >
-                  เข้าสู่ระบบ
+                  {t("nav.login")}
                 </Link>
               </div>
             </div>

@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "package": "Health Packages",
+    "department": "Departments",
+    "blog": "Articles",
+    "ai": "AI Analysis",
+    "about": "About Us",
+    "feedback": "Feedback",
+    "login": "Login"
+  },
+  "home": {
+    "hero": {
+      "title": "Leading in Preventive Medicine for Complete Health and Wellness",
+      "subtitle": "Assess health risks from your test results with personalized care recommendations powered by AI",
+      "cta": "Analyze Health Results with AI"
+    },
+    "package": {
+      "title": "Health Packages for You",
+      "subtitle": "We provide comprehensive services to keep you healthy",
+      "viewAll": "View All Packages"
+    },
+    "services": {
+      "title": "Our Services"
+    },
+    "articles": {
+      "title": "Health Articles",
+      "viewAll": "View All Articles"
+    }
+  },
+  "department": {
+    "checkup": "Advanced Screening & Diagnostics",
+    "child": "Adolescent Wellness & Development",
+    "woman": "Women's Health & Screening",
+    "physical": "Sports Medicine & Rehabilitation",
+    "bone": "Bone and Joint Center",
+    "skin": "Aesthetic & Dermatology",
+    "dental": "Comprehensive Dental",
+    "eye": "Specialized Eye Care Center"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit Feedback"
+  },
+  "common": {
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "search": "Search",
+    "loading": "Loading...",
+    "back": "Back"
+  }
+}
