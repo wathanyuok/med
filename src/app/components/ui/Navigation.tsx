@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { DropdownMenuApp } from "./DropdownMenuApp";
 import { services } from "@/app/utils/mockData/services";
+import LanguageSwitcher from "./LanguageSwitcher"; 
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ function Navigation() {
     { label: "AI วิเคราะห์ผล", href: "/ai" },
     { label: "เกี่ยวกับเรา", href: "/aboutUs" },
     { label: "ติชมบริการ", href: "/feedback" },
-    { label: "เข้าสู่ระบบ", href: "/", type: "login-btn" },
+    { label: "เข้าสู่ระบบ", href: "/login", type: "login-btn" },
   ];
 
   return (
@@ -49,8 +50,20 @@ function Navigation() {
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
               if (item.type === "dropdown") {
+                return <DropdownMenuApp label="แผนก" key={item.label} />;
+              }
+
+              if (item.type === "login-btn") {
                 return (
-                  <DropdownMenuApp label="แผนก" key={item.label} />
+                  <div key={item.label} className="flex items-center space-x-4">
+                    <LanguageSwitcher />
+                    <Link
+                      href={item.href}
+                      className="bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105 transition duration-300 font-medium"
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
                 );
               }
 
@@ -61,9 +74,8 @@ function Navigation() {
                   href={item.href}
                   className={`
                     transition duration-300 font-medium relative cursor-pointer
-                    ${item.type === "login-btn"
-                      ? "bg-neutral-300 text-neutral-800 rounded-full px-8 py-2 hover:bg-exa-pink/80 hover:text-white hover:scale-105"
-                      : isActive
+                    ${
+                      isActive
                         ? "text-exa-pink font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-100 after:origin-left after:transition-transform"
                         : "text-foreground hover:text-exa-pink after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform"
                     }
@@ -90,7 +102,6 @@ function Navigation() {
                 {navItems
                   .filter((item) => item.type !== "login-btn")
                   .map((item) => {
-                    // ถ้าเป็น "แผนก" ให้ทำ accordion
                     if (item.type === "dropdown") {
                       return (
                         <div key={item.label}>
@@ -106,22 +117,25 @@ function Navigation() {
                             )}
                           </button>
 
-                          {/* Submenu ของแผนก */}
                           {isDeptOpen && (
                             <div className="mt-2 ml-4 flex flex-col space-y-2">
                               {services.map((service) => {
-                                const isActiveSub = pathname.startsWith(service.href);
+                                const isActiveSub = pathname.startsWith(
+                                  service.href
+                                );
                                 return (
                                   <Link
                                     key={service.href}
                                     href={service.href}
                                     onClick={() => setIsMenuOpen(false)}
                                     className={`
-                                        text-sm transition-colors
-                                        ${isActiveSub
-                                        ? "text-exa-pink"
-                                        : "text-neutral-700 hover:text-exa-pink"}
-                                   `}
+                                      text-sm transition-colors
+                                      ${
+                                        isActiveSub
+                                          ? "text-exa-pink"
+                                          : "text-neutral-700 hover:text-exa-pink"
+                                      }
+                                    `}
                                   >
                                     {service.th_name}
                                   </Link>
@@ -129,46 +143,47 @@ function Navigation() {
                               })}
                             </div>
                           )}
-
                         </div>
                       );
                     }
 
                     const isActive = pathname === item.href;
                     return (
-                      <a
+                      <Link
                         href={item.href}
                         key={item.label}
                         onClick={() => setIsMenuOpen(false)}
                         className={`
                           transition-colors duration-200 font-medium
-                          ${isActive
-                            ? "text-exa-pink font-semibold"
-                            : "text-foreground hover:text-exa-pink"
+                          ${
+                            isActive
+                              ? "text-exa-pink font-semibold"
+                              : "text-foreground hover:text-exa-pink"
                           }
                         `}
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     );
                   })}
               </div>
 
-              {/* ปุ่ม login ล่างสุด */}
-              <div className="p-6 border-t border-neutral-200">
-                <a
+              {/* ปุ่มเปลี่ยนภาษา + Login ล่างสุด */}
+              <div className="p-6 border-t border-neutral-200 space-y-4">
+                <LanguageSwitcher />
+                <Link
                   href="/login"
                   onClick={() => setIsMenuOpen(false)}
                   className="block w-full bg-exa-pink text-white font-semibold text-center py-3 rounded-xl hover:bg-exa-pink/80 transition-transform hover:scale-105"
                 >
                   เข้าสู่ระบบ
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         )}
 
-        {/* Overlay (กดปิดเมนู) */}
+        {/* Overlay */}
         {isMenuOpen && (
           <div
             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 animate-fadeIn"

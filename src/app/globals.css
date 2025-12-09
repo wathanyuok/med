@@ -214,3 +214,47 @@
   }
 
 }
+
+/* Google Translate Styles */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  font-size: 14px !important;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #D8E1FF;
+  background: white;
+  color: #10203C;
+  cursor: pointer;
+  outline: none;
+}
+
+.goog-te-gadget .goog-te-combo:hover {
+  border-color: #F639BD;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-te-gadget img {
+  display: none !important;
+}
+
+.goog-te-gadget span {
+  display: none !important;
+}
+
+#google_translate_element {
+  display: inline-block;
+}
