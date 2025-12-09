@@ -2,55 +2,30 @@
 import { useState } from "react";
 
 function LanguageSwitcher() {
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const translatePage = (lang: string) => {
-    const currentUrl = window.location.href;
-    
-    if (lang === "en") {
-      // เปิดหน้าแปลใน tab เดิม
-      window.location.href = `https://translate.google.com/translate?sl=th&tl=en&u=${encodeURIComponent(currentUrl.replace('https://translate.google.com/translate?sl=th&tl=en&u=', ''))}`;
-    } else {
-      // กลับหน้าเดิม (ภาษาไทย)
-      const originalUrl = currentUrl.includes('translate.google')
-        ? decodeURIComponent(currentUrl.split('&u=')[1] || '')
-        : currentUrl;
-      
-      if (originalUrl && originalUrl !== currentUrl) {
-        window.location.href = originalUrl;
-      }
-    }
-    setShowDropdown(false);
-  };
+  const [lang, setLang] = useState("th");
 
   return (
-    <div className="relative">
+    <div className="flex gap-1">
       <button
-        onClick={() => setShowDropdown(!showDropdown)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-neutral-300 hover:border-exa-pink transition-colors"
+        onClick={() => setLang("th")}
+        className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+          lang === "th"
+            ? "bg-exa-pink text-white"
+            : "bg-neutral-200 text-neutral-600 hover:bg-neutral-300"
+        }`}
       >
-        <span className="text-sm font-medium">🌐 ภาษา</span>
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        TH
       </button>
-
-      {showDropdown && (
-        <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-lg border border-neutral-200 overflow-hidden z-50">
-          <button
-            onClick={() => translatePage("th")}
-            className="block w-full px-4 py-2 text-left text-sm hover:bg-neutral-100 transition-colors"
-          >
-            🇹🇭 ไทย
-          </button>
-          <button
-            onClick={() => translatePage("en")}
-            className="block w-full px-4 py-2 text-left text-sm hover:bg-neutral-100 transition-colors"
-          >
-            🇺🇸 English
-          </button>
-        </div>
-      )}
+      <button
+        onClick={() => setLang("en")}
+        className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+          lang === "en"
+            ? "bg-exa-pink text-white"
+            : "bg-neutral-200 text-neutral-600 hover:bg-neutral-300"
+        }`}
+      >
+        EN
+      </button>
     </div>
   );
 }
