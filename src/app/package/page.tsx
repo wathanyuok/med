@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CardCarousel } from "@/app/components/ui/Carousel";
@@ -7,9 +6,7 @@ import PackageCard from "@/app/components/packagePage/PackageCard";
 import Selection from "@/app/components/ui/Selection";
 import ChipSelector from "@/app/components/ui/ChipSelector";
 import SortSelection from "@/app/components/ui/SortSelection";
-
 import { packages } from "../utils/mockData/packages";
-
 
 const options = [
   { id: 9, value: "แผนกทั้งหมด" },
@@ -25,10 +22,8 @@ const options = [
 
 function PackageListPage() {
   const router = useRouter();
-
   const [selectedId, setSelectedId] = useState<number>(9);
   const [sortOrder, setSortOrder] = useState<"desc" | "asc">("desc");
-
 
   const filteredPackages = useMemo(() => {
     const data =
@@ -47,7 +42,6 @@ function PackageListPage() {
 
   const handleDetailClick = (id: number) => router.push(`/package/${id}`);
   const handleBuyPackage = (id: number) => router.push(`/payment/${id}`);
-
 
   return (
     <div className="py-40">
@@ -90,7 +84,7 @@ function PackageListPage() {
         </div>
 
         {/* Sort */}
-        <div className="mb-8 flex items-center gap-4">
+        <div className="mb-6 flex items-center gap-4">
           <p className="text-md md:text-lg lg:text-xl font-semibold text-bright-black">
             เรียงตาม
           </p>
@@ -106,8 +100,8 @@ function PackageListPage() {
           </div>
         </div>
 
-        {/* Grid Packages */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Grid Packages - ลด gap และเพิ่ม max-width */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {filteredPackages.length === 0 ? (
             <div className="col-span-full py-10 text-center text-gray-500">
               ไม่พบแพคเกจในหมวดนี้
