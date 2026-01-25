@@ -15,6 +15,41 @@ const stepImageMap: Record<number, StaticImageData> = {
   4: Step4,
 };
 
+const stepData = [
+  {
+    stepNumber: 1,
+    title: "สมัครสมาชิกกับเรา",
+    description: (
+      <>
+        สมัครสมาชิกเว็บไซต์ <br />
+        <a
+          href="https://Exa-med.co/AI"
+          className="text-neutral-800 underline underline-offset-4"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Exa-med.co/AI
+        </a>
+      </>
+    ),
+  },
+  {
+    stepNumber: 2,
+    title: "ลงทะเบียนข้อมูลผู้รับบริการ",
+    description: "ลงทะเบียนเลขบัตรประชาชนและข้อมูลชื่อที่อยู่",   
+  },
+  {
+    stepNumber: 3,
+    title: "จองคิว/ปรึกษาแพทย์",
+    description: "เลือกเวลานัดหมาย เข้าลิงก์ปรึกษาแพทย์ออนไลน์ผ่าน SMS",
+  },
+  {
+    stepNumber: 4,
+    title: "รอรับยา",
+    description: "เลือกรอรับยาที่บ้านหรือเข้ามารับยาด้วยตัวเอง",
+  }
+]
+
 type CardProps = {
   stepNumber: 1 | 2 | 3 | 4;
   title: string;
@@ -48,7 +83,7 @@ const CardComponent = ({ stepNumber, title, description }: CardProps) => {
 };
 
 type Props = {
-  flipGrid?: boolean; // สลับซ้าย/ขวา (เฉพาะจอใหญ่ lg+)
+  flipGrid?: boolean; // สลับซ้าย/ขวา
 };
 
 const RegisterForConsultation = ({ flipGrid = false }: Props) => {
@@ -121,38 +156,14 @@ const RegisterForConsultation = ({ flipGrid = false }: Props) => {
         </h3>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <CardComponent
-            stepNumber={1}
-            title="สมัครสมาชิกกับเรา"
-            description={
-              <>
-                สมัครสมาชิกเว็บไซต์ <br />
-                <a
-                  href="https://Exa-med.co/AI"
-                  className="text-neutral-800 underline underline-offset-4"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Exa-med.co/AI
-                </a>
-              </>
-            }
-          />
-          <CardComponent
-            stepNumber={2}
-            title="ลงทะเบียนข้อมูลผู้รับบริการ"
-            description="ลงทะเบียนเลขบัตรประชาชนและข้อมูลชื่อที่อยู่"
-          />
-          <CardComponent
-            stepNumber={3}
-            title="จองคิว/ปรึกษาแพทย์"
-            description="เลือกเวลานัดหมาย เข้าลิงก์ปรึกษาแพทย์ออนไลน์ผ่าน SMS"
-          />
-          <CardComponent
-            stepNumber={4}
-            title="รอรับยา"
-            description="เลือกรอรับยาที่บ้านหรือเข้ามารับยาด้วยตัวเอง"
-          />
+          {stepData.map((step) => (
+            <CardComponent
+              key={step.stepNumber}
+              stepNumber={step.stepNumber as 1 | 2 | 3 | 4}
+              title={step.title}
+              description={step.description}
+            />
+          ))} 
         </div>
       </div>
     </section>
