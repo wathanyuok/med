@@ -6,6 +6,7 @@ import AvatarSection from "./components/homepage/AvatarSection";
 import BenefitSection from "./components/homepage/BenefitSection";
 import AnalyzeHealthSection from "./components/homepage/AnalyzeHealthSection";
 import PackageSection from "./components/homepage/PackageSection";
+import RegisterForConsultation from "./components/homepage/RegisterForConsultation";
 
 export default function Home() {
     return (
@@ -35,6 +36,13 @@ export default function Home() {
             <div className=" bg-sky py-12 ">
                 <div className="container mx-auto px-4">
                     <ServiceSection />
+                </div>
+            </div>
+
+            {/* Register For Consultation */}
+            <div >
+                <div className="container mx-auto px-4 mt-12">
+                    <RegisterForConsultation />
                 </div>
             </div>
 
