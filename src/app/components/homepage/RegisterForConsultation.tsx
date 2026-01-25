@@ -24,9 +24,7 @@ type CardProps = {
 const CardComponent = ({ stepNumber, title, description }: CardProps) => {
   return (
     <div className="h-full">
-      {/* Image */}
       <div className="mx-auto mb-4 overflow-hidden rounded-2xl">
-        {/* ใช้ aspect ratio ให้การ์ดสวยบนทุกจอ */}
         <div className="relative w-full aspect-[259/233]">
           <Image
             src={stepImageMap[stepNumber]}
@@ -39,7 +37,6 @@ const CardComponent = ({ stepNumber, title, description }: CardProps) => {
         </div>
       </div>
 
-      {/* Text */}
       <h4 className="mb-2 text-center text-xl md:text-2xl font-semibold text-neutral-800">
         {stepNumber}. {title}
       </h4>
@@ -50,13 +47,45 @@ const CardComponent = ({ stepNumber, title, description }: CardProps) => {
   );
 };
 
-const RegisterForConsultation = () => {
+type Props = {
+  flipGrid?: boolean; // สลับซ้าย/ขวา (เฉพาะจอใหญ่ lg+)
+};
+
+const RegisterForConsultation = ({ flipGrid = false }: Props) => {
+  const desktopCols = flipGrid
+    ? "lg:grid-cols-[1.1fr_0.9fr]" // image | text (image ใหญ่)
+    : "lg:grid-cols-[0.9fr_1.1fr]"; // text | image (image ใหญ่)
+
+  const textDesktopOrder = flipGrid ? "lg:order-2" : "lg:order-1";
+  const imgDesktopOrder = flipGrid ? "lg:order-1" : "lg:order-2";
+
   return (
     <section className="w-full">
-      {/* Top section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        {/* Left */}
-        <div className="order-2 lg:order-1">
+      {/* HERO */}
+      <div
+        className={[
+          "grid grid-cols-1 items-center",
+          desktopCols,
+          "gap-8 lg:gap-12",
+        ].join(" ")}
+      >
+        {/* Image: mobile always top */}
+        <div className={["order-1", imgDesktopOrder].join(" ")}>
+          <div className="overflow-hidden rounded-2xl">
+            <div className="relative w-full min-h-[450px] md:min-h-[572px] ">
+              <Image
+                src={RegisterConsultationImg}
+                alt="register-consultation"
+                fill
+                className="object-cover object-top ]"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Text: mobile always below */}
+        <div className={["order-2", textDesktopOrder].join(" ")}>
           <h3 className="text-neutral-800 text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 leading-tight">
             หาหมอออนไลน์
             <br className="hidden sm:block" />
@@ -83,23 +112,9 @@ const RegisterForConsultation = () => {
             * ขึ้นอยู่กับตารางการให้บริการของแพทย์ในแต่ละวัน
           </p>
         </div>
-
-        {/* Right */}
-        <div className="order-1 lg:order-2 overflow-hidden rounded-2xl">
-          <div className="relative w-full aspect-[16/12] sm:aspect-[16/10] lg:aspect-[16/12]">
-            <Image
-              src={RegisterConsultationImg}
-              alt="register-consultation"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-          </div>
-        </div>
       </div>
 
-      {/* Steps */}
+      {/* STEPS */}
       <div className="mt-12 md:mt-16">
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-neutral-800 text-center mb-8 md:mb-12">
           4 ขั้นตอนง่ายๆในการปรึกษาแพทย์ออนไลน์
@@ -111,7 +126,7 @@ const RegisterForConsultation = () => {
             title="สมัครสมาชิกกับเรา"
             description={
               <>
-                สมัครสมาชิกเว็บไซต์ <br/>
+                สมัครสมาชิกเว็บไซต์ <br />
                 <a
                   href="https://Exa-med.co/AI"
                   className="text-neutral-800 underline underline-offset-4"

@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { DropdownMenuApp } from "./DropdownMenuApp";
@@ -18,6 +18,7 @@ function Navigation() {
   const navItems = [
     { label: t("nav.home"), href: "/" },
     { label: t("nav.package"), href: "/package" },
+    { label: t("nav.register_for_consultation"), href: "/register_for_consultation" },
     { label: t("nav.department"), href: "/department", type: "dropdown" },
     { label: t("nav.blog"), href: "/blog" },
     { label: t("nav.ai"), href: "/ai" },
