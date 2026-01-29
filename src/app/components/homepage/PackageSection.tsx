@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+
 import { CardCarousel } from "../ui/Carousel";
 import { ArrowRight } from "@/app/assets/icons/homepageIcons";
 import { packages } from "@/app/utils/mockData/packages";
@@ -22,12 +23,12 @@ function PackageSection() {
     
     return (
         <div>
-            <div className="flex justify-between items-start container mx-auto px-4">
+            <div className="flex-row md:flex justify-between items-start container mx-auto px-4">
                 <div className="pb-8">
                     <h3 className="text-2xl md:text-3xl text-neutral-800 font-semibold text-start">
                         แพคเกจสุขภาพสำหรับคุณ
                     </h3>
-                    <p className="text-lg md:text-xl  text-neutral-800 ">
+                    <p className="text-lg md:text-xl pt-6  text-neutral-800 ">
                         ไม่ได้ดูแลแค่เวลาป่วย แต่ใส่ใจบริการอย่างครอบคลุม
                         เพื่อให้คุณมีสุขภาพแข็งแรงและใช้ชีวิตได้อย่างที่คุณต้องการ
                     </p>
