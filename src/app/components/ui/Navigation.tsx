@@ -50,7 +50,7 @@ function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4">
             {navItems.map((item) => {
 
               if (item.type === "dropdown") {
@@ -81,7 +81,7 @@ function Navigation() {
                   key={item.label}
                   href={item.href}
                   className={`
-                    transition duration-300 font-medium relative cursor-pointer
+                    transition duration-300 font-medium relative 
                     ${
                       isActive
                         ? "text-exa-pink font-semibold after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-exa-pink after:scale-x-100"
@@ -188,6 +188,7 @@ function Navigation() {
                   {t("nav.login")}
                 </Link>
               </div>
+              
             </div>
           </div>
         )}
