@@ -29,13 +29,13 @@ function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-100 shadow-lg border-b border-white/10 p-6 lg:p-8">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-12">
+      <div className="">
+        <div className="flex items-center justify-center lg:justify-between h-12">
           
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-foreground hover:text-exa-pink transition-colors"
+            className="lg:hidden p-2 text-foreground hover:text-exa-pink transition-colors "
           >
             {isMenuOpen ? (
               <X className="w-6 h-6 transition-transform duration-300 rotate-180" />
@@ -45,12 +45,12 @@ function Navigation() {
           </button>
 
           {/* Logo */}
-          <div className="flex-1 flex justify-center lg:justify-start">
+          <div className="flex-1 flex justify-center items-center lg:item-center  lg:justify-start h-12 ">
             <Logo />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-6 ">
             {navItems.map((item) => {
 
               if (item.type === "dropdown") {
@@ -107,7 +107,7 @@ function Navigation() {
               </div>
 
               {/* Menu Middle */}
-              <div className="flex-1 flex flex-col space-y-4 p-6">
+              <div className="flex-1 flex flex-col space-y-6 p-6">
                 {navItems
                   .filter((item) => item.type !== "login-btn")
                   .map((item) => {
